@@ -32,6 +32,14 @@ Run `npm run theme` to generate `src/theme/tokens.css`. Both dev and build regen
 
 Set `data-mode="light"` or `data-mode="dark"` on `<html>`. Without an explicit mode, the system preference applies. Colors use `light-dark()`; no inversion filters or `dark:` classes are required. Set the mode on the document to include portaled dialogs. The Theming page displays all token values.
 
+## Motion
+
+Motion (`motion/react`) provides spring switch movement, checkbox stroke drawing, press feedback, focused input accents, tab/filter indicators, catalog repositioning, and modal/toast entry and exit. Color changes remain immediate.
+
+The registry installs Motion and includes `folio-motion.tsx`, exporting controlled `AnimatedOverlay` and `AnimatedModal`. Keep React Aria `Dialog` inside the modal; pass `isOpen` and `onOpenChange` to the overlay. Presence animation preserves the portal, focus trap, Escape handling and focus restoration through exit.
+
+Primitives and modals respect `prefers-reduced-motion` independently. The application also wraps its animations in `<MotionConfig reducedMotion="user">`. Initial switch/checkbox values render without animating; reduced-motion changes happen immediately.
+
 ## Verification
 
 `npm run build` checks TypeScript and builds the registry and site. Start the dev server, then run `FOLIO_TEST_URL=http://localhost:5173 npm test` for token checks and browser smoke tests.

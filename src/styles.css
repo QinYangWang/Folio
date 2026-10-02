@@ -302,3 +302,13 @@ input::placeholder{color:var(--text-color-kumo-placeholder)}
 .token-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:14px;border-bottom:1px solid var(--color-kumo-hairline);font-size:11px}
 .token-row:last-child{border:0}.token-row>div:first-child{display:flex;align-items:center;gap:10px}.token-row code{overflow-wrap:anywhere}.token-row>div:last-child code{display:block;color:var(--text-color-kumo-subtle);margin-bottom:5px}.token-table-heading{background:var(--color-kumo-recessed);font-weight:500}.token-chip{width:24px;height:24px;flex-shrink:0;border-radius:5px;box-shadow:0 0 0 1px var(--color-kumo-line)}
 @media(max-width:600px){.token-row{grid-template-columns:1fr;gap:8px}.token-table-heading{display:none}}
+/* Animate geometry and opacity; interaction colors remain immediate. */
+.filters button{position:relative;isolation:isolate}
+.filters button.selected{background:transparent}
+.filters button>span:not(.filter-indicator){position:relative}
+.filter-indicator{position:absolute;inset:0;border-radius:5px;background:var(--color-kumo-tint);z-index:-1}
+.demo-tabs [role=tab]{position:relative}
+.demo-tabs [role=tab][data-selected]{border-bottom-color:transparent}
+.tab-indicator{position:absolute;inset:auto 0 -2px;height:2px;background:var(--color-kumo-brand)}
+.toast{translate:-50% 0;transform:none}
+.component-grid{position:relative}

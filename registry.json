@@ -79,6 +79,7 @@
         }
       },
       "dependencies": [
+        "motion",
         "react-aria-components",
         "lucide-react",
         "clsx",
@@ -88,6 +89,11 @@
         {
           "path": "src/components/ui.tsx",
           "target": "@ui/folio.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/animation.tsx",
+          "target": "@ui/folio-motion.tsx",
           "type": "registry:ui"
         }
       ]
