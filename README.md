@@ -1,57 +1,98 @@
 # Folio UI
 
-React + TypeScript + React Aria Components + Tailwind CSS v4. A Kumo-inspired component library and shadcn registry starter.
+React Aria + Tailwind CSS v4 + Motion. Source-distributed components with Kumo semantic colors and tactile surfaces.
+
+## Repository layout
+
+```text
+apps/docs/                 Vite documentation and preview application
+  src/pages/               Handbook and commercial block preview pages
+  src/examples/            Examples importing the real registry components
+  src/lib/                 Documentation snippets
+  public/r/                Generated installable registry items
+registry/
+  ui/                      12 independently installable components
+  lib/                     Shared class merging and motion presets
+  styles/                  Color/surface definitions and generated Tailwind theme
+registry.json              Source manifest: component files and npm dependencies
+scripts/                   Theme and registry generators
+tests/                     Standalone installation, browser and token checks
+```
+
+There is one dependency lockfile and one build configuration. This source registry does not need an npm workspace package or a published runtime package. The docs resolve `@/ui/*` and `@/lib/*` directly to registry source; there is no second copy of the components.
 
 ## Development
 
 ```sh
 npm install
-npm run build
 npm run dev
+npm run build
 ```
 
-## Install the primitives in another application
+Vite serves `apps/docs`; production output is `dist`. Dev/build regenerate the registry and theme. Run `npm run registry:build` after changing registry source during development to refresh downloadable JSON.
 
-Prepare a React project with Tailwind CSS v4 and initialize shadcn, then run:
+## Install components
+
+In a React project with Tailwind v4 and a configured shadcn `components.json`:
 
 ```sh
-npx shadcn@latest add http://localhost:5173/r/folio.json
+npx shadcn@latest add http://localhost:5173/r/button.json
+npx shadcn@latest add http://localhost:5173/r/text-field.json
+npx shadcn@latest add http://localhost:5173/r/dialog.json
 ```
 
-Import `Button`, `Field`, `Checkbox`, and `Switch` from your configured UI directory's `folio.tsx`. Each uses React Aria for interaction. The remaining catalog entries are preview patterns, not individually published registry components. Build regenerates the registry from the actual source. Configure your production URL before publishing; a named `@folio` namespace has not been registered.
+Use the actual dev-server port, or your deployed docs URL. Individual URLs also exist for checkbox, switch, badge, card, tabs, select, avatar, alert, and tooltip. `/r/folio.json` installs all components; `/r/theme.json` installs only the theme. No named namespace is claimed.
 
-## Commercial blocks
+Each component item contains one UI source file, only the shared helpers it needs, its npm dependencies and the shared theme CSS. This avoids hardcoded registry dependency URLs and works when the site hostname changes. Shared helper targets are deduplicated by the CLI. Configure the homepage in `registry.json` before publishing.
 
-The Blocks page is a visual preview only. Payment, accounts, licenses, and authenticated source delivery are not implemented. Do not place paid source in `public/r`: it is publicly downloadable. A production paid registry needs server-side purchase verification, signed webhooks, and authorized registry endpoints. Pricing and payment provider remain product decisions.
+```tsx
+import { Button } from '@/components/ui/button';
+import { TextField } from '@/components/ui/text-field';
 
-## Color tokens
+<TextField label="Email" name="email" type="email" isRequired />
+<Button variant="primary">Continue</Button>
+```
 
-`src/theme/tokens.json` defines all 54 semantic tokens from [Kumo’s token reference](https://kumo-ui.com/colors/). Primitive references resolve to Tailwind v4 colors when defined (for example, blue-500), with documented fallbacks for Kumo-only primitives. Text and surface namespaces remain separate: brand text is orange, brand controls are blue.
+The CLI resolves targets using the consuming project's aliases. Components use individual files, not the former `folio.tsx` barrel; existing consumers should update imports when migrating. Dialog exports `AnimatedOverlay` and `AnimatedModal`: pass `isOpen` and `onOpenChange` to the overlay and put React Aria `Dialog` inside the modal. Tooltip expects a focusable React Aria trigger such as Button. Select supports labeled options, disabled options, controlled selection, descriptions and errors. TextField forwards React Aria form and validation properties.
 
-Run `npm run theme` to generate `src/theme/tokens.css`. Both dev and build regenerate the CSS and embed it in the shadcn registry, so installed components receive the same theme. Two Folio-only tokens cover constant foregrounds on brand controls and the modal backdrop.
+## Themes and materials
 
-Set `data-mode="light"` or `data-mode="dark"` on `<html>`. Without an explicit mode, the system preference applies. Colors use `light-dark()`; no inversion filters or `dark:` classes are required. Set the mode on the document to include portaled dialogs. The Theming page displays all token values.
+`registry/styles/tokens.json` defines 54 semantic tokens based on [Kumo](https://kumo-ui.com/colors/). Text and background namespaces remain separate. `surfaces.json` adds gradients, highlights and raised/inset shadows. `npm run theme` generates `tokens.css`; registry payloads embed the same CSS.
 
-## Motion
+Set `data-mode="light"` or `data-mode="dark"` on `<html>` so portals inherit the mode. Otherwise the system preference applies. Motion primitives respect reduced motion independently; the docs additionally use `MotionConfig reducedMotion="user"`.
 
-Motion (`motion/react`) provides spring switch movement, checkbox stroke drawing, press feedback, focused input accents, tab/filter indicators, catalog repositioning, and modal/toast entry and exit. Color changes remain immediate.
+## Adding a component
 
-The registry installs Motion and includes `folio-motion.tsx`, exporting controlled `AnimatedOverlay` and `AnimatedModal`. Keep React Aria `Dialog` inside the modal; pass `isOpen` and `onOpenChange` to the overlay. Presence animation preserves the portal, focus trap, Escape handling and focus restoration through exit.
-
-Primitives and modals respect `prefers-reduced-motion` independently. The application also wraps its animations in `<MotionConfig reducedMotion="user">`. Initial switch/checkbox values render without animating; reduced-motion changes happen immediately.
+1. Add its implementation in `registry/ui`, using semantic Tailwind tokens rather than docs CSS.
+2. Declare its files, shared helpers and npm dependencies in `registry.json`.
+3. Add a real usage example in `apps/docs/src/examples` and a snippet in `src/lib/snippets.ts`.
+4. Run `npm run build` and `npm run test:registry`.
 
 ## Verification
 
-`npm run build` checks TypeScript and builds the registry and site. Start the dev server, then run `FOLIO_TEST_URL=http://localhost:5173 npm test` for token checks and browser smoke tests.
+```sh
+npm run build
+npm run test:registry
+# With the dev server running:
+FOLIO_TEST_URL=http://localhost:5173 npm test
+```
 
-## References
+Registry checks materialize each installable item separately and compile it without documentation source, verify declared npm dependencies, and compare generated payloads against actual component source. Browser checks cover keyboard interactions, modal focus restoration, themes, mobile layout and reduced motion.
 
-- https://ui.shadcn.com/docs/registry/examples
-- https://kumo-ui.com/skill/
-- https://react-aria.adobe.com/
+## Commercial blocks
 
-## Tactile surfaces
+The Blocks page remains a preview, not a published block package. Payments, accounts, licenses and protected downloads are not implemented. Keep future paid source in a private repository or authenticated service, never under `apps/docs/public`. Free blocks can later be added under `registry/blocks/<name>` with explicit `registry:block` entries; no empty or placeholder blocks are published.
 
-`src/theme/surfaces.json` supplements the Kumo palette with shared material tokens: control/brand/card gradients, highlights, raised shadows, pressed shadows, inset shadows and switch-thumb shadows. Both modes use the same lighting direction. Buttons compress when pressed, cards sit above the canvas, and inputs and switch tracks are recessed. Ghost actions remain flat. Focus rings remain visible alongside material shadows; reduced-motion mode skips the button displacement.
+## GitHub Pages
 
-Surface tokens are generated and included in the registry alongside color tokens. For a raised card, use `bg-kumo-base bg-[image:var(--background-image-folio-card)] shadow-folio-card`.
+Production URL: https://qinyangwang.github.io/Folio/
+
+`.github/workflows/pages.yml` builds, validates the registry and production browser interactions, then deploys `dist` on pushes to `main`. Pages must use **GitHub Actions** as its source. The workflow uses the built-in `GITHUB_TOKEN`; no deployment secret is needed. Private repositories require a GitHub plan that supports Pages.
+
+`npm run build:pages` sets Vite's base to `/Folio/`. Preview that build with `npm run preview -- --mode pages`, then visit `/Folio/`. Local development keeps `/`. Install commands derive their URLs from the base path, so published items resolve under `/Folio/r/`:
+
+```sh
+npx shadcn@latest add https://qinyangwang.github.io/Folio/r/button.json
+```
+
+The Pages site and free registry endpoints are publicly accessible once published, even if repository visibility is private. The site contains no paid block source or authentication secrets.
