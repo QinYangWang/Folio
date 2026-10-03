@@ -66,7 +66,23 @@
           "--color-kumo-banner-info": "light-dark(oklch(93.2% 0.032 255.585 / 0.7), oklch(37.9% 0.146 265.522 / 0.5))",
           "--color-kumo-banner-warning": "light-dark(oklch(97.3% 0.071 103.193), oklch(55.4% 0.135 66.442 / 0.5))",
           "--color-folio-on-brand": "#fff",
-          "--color-folio-backdrop": "oklch(0% 0 0 / 0.4)"
+          "--color-folio-backdrop": "oklch(0% 0 0 / 0.4)",
+          "--color-folio-highlight": "light-dark(oklch(100% 0 0 / 0.9), oklch(100% 0 0 / 0.1))",
+          "--color-folio-bevel": "light-dark(oklch(0% 0 0 / 0.09), oklch(0% 0 0 / 0.3))",
+          "--color-folio-inset-shade": "light-dark(oklch(0% 0 0 / 0.1), oklch(0% 0 0 / 0.45))",
+          "--color-folio-brand-highlight": "light-dark(oklch(100% 0 0 / 0.28), oklch(100% 0 0 / 0.18))",
+          "--color-folio-knob-base": "oklch(94% 0 0)",
+          "--background-image-folio-control": "linear-gradient(180deg, color-mix(in oklch, var(--color-kumo-control), var(--color-folio-highlight) 18%), color-mix(in oklch, var(--color-kumo-control), var(--color-kumo-fill) 40%))",
+          "--background-image-folio-brand": "linear-gradient(180deg, color-mix(in oklch, var(--color-kumo-brand), var(--color-folio-on-brand) 9%), var(--color-kumo-brand) 48%, var(--color-kumo-brand-hover))",
+          "--background-image-folio-inset": "linear-gradient(180deg, var(--color-kumo-recessed), var(--color-kumo-control))",
+          "--background-image-folio-card": "linear-gradient(155deg, var(--color-kumo-control), var(--color-kumo-base) 70%)",
+          "--background-image-folio-knob": "linear-gradient(180deg, var(--color-folio-on-brand) 35%, var(--color-folio-knob-base))",
+          "--shadow-folio-raised": "inset 0 1px 0 var(--color-folio-highlight), inset 0 -1px 0 var(--color-folio-bevel), 0 1px 2px var(--color-kumo-shadow-edge), 0 3px 5px var(--color-kumo-shadow-drop)",
+          "--shadow-folio-brand": "inset 0 1px 0 var(--color-folio-brand-highlight), inset 0 -1px 0 var(--color-folio-bevel), 0 1px 2px var(--color-kumo-shadow-edge), 0 3px 5px var(--color-kumo-shadow-drop)",
+          "--shadow-folio-inset": "inset 0 1px 3px var(--color-folio-inset-shade), 0 1px 0 var(--color-folio-highlight)",
+          "--shadow-folio-pressed": "inset 0 2px 4px var(--color-folio-inset-shade), 0 1px 0 var(--color-folio-highlight)",
+          "--shadow-folio-card": "0 0 0 1px var(--color-kumo-line), inset 0 1px 0 var(--color-folio-highlight), 0 2px 3px var(--color-kumo-shadow-drop), 0 8px 18px var(--color-kumo-shadow-drop)",
+          "--shadow-folio-knob": "inset 0 1px 0 var(--color-folio-on-brand), 0 0 0 1px var(--color-folio-bevel), 0 1px 2px var(--color-kumo-shadow-edge), 0 2px 3px var(--color-kumo-shadow-drop)"
         },
         ":root": {
           "color-scheme": "light dark"

@@ -49,3 +49,9 @@ Primitives and modals respect `prefers-reduced-motion` independently. The applic
 - https://ui.shadcn.com/docs/registry/examples
 - https://kumo-ui.com/skill/
 - https://react-aria.adobe.com/
+
+## Tactile surfaces
+
+`src/theme/surfaces.json` supplements the Kumo palette with shared material tokens: control/brand/card gradients, highlights, raised shadows, pressed shadows, inset shadows and switch-thumb shadows. Both modes use the same lighting direction. Buttons compress when pressed, cards sit above the canvas, and inputs and switch tracks are recessed. Ghost actions remain flat. Focus rings remain visible alongside material shadows; reduced-motion mode skips the button displacement.
+
+Surface tokens are generated and included in the registry alongside color tokens. For a raised card, use `bg-kumo-base bg-[image:var(--background-image-folio-card)] shadow-folio-card`.

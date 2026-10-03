@@ -9,7 +9,7 @@ try {
     await page.goto(baseURL);
     const toggle=page.getByRole('switch',{name:'Marketing emails'});
     await toggle.focus();await page.keyboard.press('Space');await expect(toggle).toBeChecked();
-    const thumb=page.getByText('Marketing emails',{exact:true}).locator('span[aria-hidden]');
+    const thumb=toggle.locator('xpath=ancestor::label').locator('span[aria-hidden]');
     await expect.poll(()=>thumb.evaluate(el=>new DOMMatrix(getComputedStyle(el).transform).m41)).toBe(16);
     await page.getByRole('button',{name:'Toggle color theme'}).click();
     await expect(toggle).toBeChecked(); // Theme changes must not remount previews.

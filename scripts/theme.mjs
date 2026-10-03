@@ -6,6 +6,7 @@ export const theme = Object.fromEntries(Object.entries(tokens).map(([name, [ligh
 // Primary controls keep white foregrounds in both modes; inverse text is for contrast surfaces.
 theme['--color-folio-on-brand'] = '#fff';
 theme['--color-folio-backdrop'] = 'oklch(0% 0 0 / 0.4)';
+Object.assign(theme, JSON.parse(await readFile(new URL('../src/theme/surfaces.json', import.meta.url), 'utf8')));
 export const css = {
   '@theme static': theme,
   ':root': { 'color-scheme': 'light dark' },
