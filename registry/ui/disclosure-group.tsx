@@ -11,7 +11,7 @@ export const DisclosureGroup = styled(
 );
 export const Disclosure = styled(
   AriaDisclosure,
-  "rounded-lg bg-kumo-base p-4 shadow-folio-card",
+  "rounded-lg bg-kumo-base px-4 py-3 shadow-folio-card",
 );
 export const DisclosurePanel = styled(
   AriaDisclosurePanel,

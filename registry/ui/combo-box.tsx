@@ -17,7 +17,7 @@ export const Input = styled(
 );
 export const Popover = styled(
   AriaPopover,
-  "z-50 min-w-52 rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40",
+  "z-50 min-w-52 rounded-xl bg-kumo-base p-1.5 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40",
 );
 export const ListBox = styled(AriaListBox, "outline-none");
 export const ListBoxItem = styled(

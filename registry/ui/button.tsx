@@ -20,7 +20,7 @@ export function Button({
           variant === "primary"
             ? "bg-kumo-brand bg-[image:var(--background-image-folio-brand)] text-folio-on-brand shadow-folio-brand ring-1 ring-kumo-brand-hover data-[hovered]:brightness-105 data-[pressed]:bg-none data-[pressed]:shadow-folio-pressed data-[pressed]:translate-y-px motion-reduce:data-[pressed]:translate-y-0"
             : variant === "ghost"
-              ? "hover:bg-kumo-tint"
+              ? "text-kumo-default data-[hovered]:bg-kumo-tint data-[pressed]:bg-kumo-fill-hover"
               : "bg-kumo-control bg-[image:var(--background-image-folio-control)] text-kumo-default shadow-folio-raised ring-1 ring-kumo-line data-[hovered]:bg-kumo-fill-hover data-[pressed]:bg-none data-[pressed]:shadow-folio-pressed data-[pressed]:translate-y-px motion-reduce:data-[pressed]:translate-y-0",
           typeof className === "function" ? className(state) : className,
         )

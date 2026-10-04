@@ -6,7 +6,7 @@ import {
 import { styled } from "@/lib/folio-styled";
 export const ToggleButtonGroup = styled(
   AriaToggleButtonGroup,
-  "flex flex-wrap gap-1 rounded-lg bg-kumo-recessed p-1 shadow-folio-inset",
+  "flex flex-wrap gap-1 rounded-[10px] bg-kumo-recessed p-1 shadow-folio-inset",
 );
 export const ToggleButton = styled(
   AriaToggleButton,

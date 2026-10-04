@@ -15,6 +15,6 @@ export const ToastRegion = styled(
 );
 export const Toast = styled(
   AriaToast,
-  "mb-2 flex items-center justify-between gap-4 rounded-xl bg-kumo-base p-4 text-sm text-kumo-default shadow-folio-card outline-none",
+  "mb-2 flex items-center justify-between gap-4 rounded-xl bg-kumo-base px-4 py-3 text-sm text-kumo-default shadow-folio-card outline-none",
 );
 export const ToastContent = styled(AriaToastContent, "flex flex-col gap-1");

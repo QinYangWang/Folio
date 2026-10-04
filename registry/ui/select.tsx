@@ -39,16 +39,16 @@ export function Select({
       className="flex w-full flex-col gap-1.5 text-sm text-kumo-default"
     >
       <Label className="font-medium">{label}</Label>
-      <Button className="flex min-h-9 items-center justify-between gap-3 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-left shadow-folio-inset ring-1 ring-kumo-line outline-none data-[focus-visible]:ring-2 ring-kumo-focus data-[disabled]:opacity-40">
+      <Button className="flex min-h-9 items-center justify-between gap-3 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-left shadow-folio-inset ring-1 ring-kumo-line outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40">
         <SelectValue />
         <ChevronDown size={16} aria-hidden="true" />
       </Button>
       {description && (
-        <Text slot="description" className="text-xs text-kumo-subtle">
+        <Text slot="description" className="text-sm text-kumo-subtle">
           {description}
         </Text>
       )}
-      <FieldError className="text-xs text-kumo-danger">
+      <FieldError className="text-sm text-kumo-danger">
         {errorMessage}
       </FieldError>
       <Popover className="z-50 w-[var(--trigger-width)] min-w-44 rounded-lg bg-kumo-base p-1 text-kumo-default shadow-folio-card">

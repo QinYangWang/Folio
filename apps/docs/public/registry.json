@@ -163,13 +163,20 @@
       "description": "Folio dialog: semantic colors and tactile surfaces.",
       "dependencies": [
         "react-aria-components@^1.21.1",
-        "motion"
+        "motion",
+        "clsx",
+        "tailwind-merge"
       ],
       "files": [
         {
           "path": "registry/ui/dialog.tsx",
           "type": "registry:ui",
           "target": "@ui/dialog.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
         }
       ]
     },

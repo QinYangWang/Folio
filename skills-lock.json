@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "skills": {
+    "kumo-design": {
+      "source": "cloudflare/kumo",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cloudflare/kumo.git",
+      "skillPath": "skills/kumo-design/SKILL.md",
+      "installPath": ".agents/skills/kumo-design/SKILL.md",
+      "skillFolderHash": "0f2c3f9565a887077f3aa9397a9ac43c5a152686",
+      "skillFileHash": "1960396c37dd082072f9fa884d004c0017b03973",
+      "installedAt": "2026-10-04T04:57:34.000Z",
+      "updatedAt": "2026-10-04T04:57:34.000Z"
+    }
+  }
+}

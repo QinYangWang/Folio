@@ -1789,8 +1789,8 @@ input::placeholder {
   padding: 48px 28px;
   border: 1px solid var(--color-kumo-hairline);
   border-radius: 14px;
-  background: var(--color-kumo-base);
-  box-shadow: var(--shadow-folio-card);
+  /* Flat canvas: examples (Card, Menu, ListBox…) are the only raised layer. */
+  background: var(--color-kumo-recessed);
 }
 .doc-example {
   max-width: 100%;

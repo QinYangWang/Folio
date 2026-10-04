@@ -22,7 +22,7 @@ export function Tooltip({
       {children}
       <AriaTooltip
         {...props}
-        className="z-50 rounded-md bg-kumo-contrast px-3 py-2 text-xs text-kumo-inverse shadow-folio-raised"
+        className="z-50 rounded-md bg-kumo-contrast px-2.5 py-1.5 text-sm text-kumo-inverse shadow-folio-raised"
       >
         <motion.div
           initial={{ opacity: 0, y: reduced ? 0 : 3 }}

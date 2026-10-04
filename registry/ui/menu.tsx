@@ -8,7 +8,7 @@ import {
 import { styled } from "@/lib/folio-styled";
 export const Menu = styled(
   AriaMenu,
-  "rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40 min-w-48 outline-none",
+  "rounded-xl bg-kumo-base p-1.5 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40 min-w-48 outline-none",
 );
 export const MenuItem = styled(
   AriaMenuItem,
@@ -17,6 +17,6 @@ export const MenuItem = styled(
 export const MenuSection = styled(AriaMenuSection, "py-1");
 export const Header = styled(
   AriaHeader,
-  "px-3 py-2 text-xs font-medium text-kumo-subtle",
+  "px-3 pt-2 pb-1 text-sm font-medium text-kumo-subtle",
 );
 export { MenuTrigger, SubmenuTrigger } from "react-aria-components";

@@ -23,19 +23,22 @@ export function Alert({
       role={variant === "danger" ? "alert" : "status"}
       {...props}
       className={cn(
-        "flex items-start gap-3 rounded-lg p-3 text-sm",
+        "flex items-start gap-2.5 rounded-lg px-3 py-2.5 text-sm leading-5",
         variants[variant],
         className,
       )}
     >
       {icon && (
-        <span className="mt-0.5 shrink-0" aria-hidden="true">
+        <span
+          className="flex h-lh shrink-0 items-center [&>svg]:size-4"
+          aria-hidden="true"
+        >
           {icon}
         </span>
       )}
-      <div>
+      <div className="grid min-w-0 gap-0.5">
         <div className="font-medium">{title}</div>
-        {children && <div className="mt-1 text-xs">{children}</div>}
+        {children && <div>{children}</div>}
       </div>
     </div>
   );

@@ -12,5 +12,5 @@ export const ColorWheelTrack = styled(
 );
 export const ColorThumb = styled(
   AriaColorThumb,
-  "size-5 rounded-full border-2 border-folio-on-brand shadow-folio-knob outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40",
+  "size-5 rounded-full inset-ring-2 inset-ring-folio-on-brand shadow-folio-knob outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40",
 );

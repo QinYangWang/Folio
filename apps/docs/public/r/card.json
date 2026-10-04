@@ -13,7 +13,7 @@
       "path": "registry/ui/card.tsx",
       "type": "registry:ui",
       "target": "@ui/card.tsx",
-      "content": "import { type ComponentProps } from \"react\";\nimport { cn } from \"@/lib/folio-utils\";\nexport function Card({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] p-5 text-kumo-default shadow-folio-card\",\n        className,\n      )}\n    />\n  );\n}\n"
+      "content": "import { type ComponentProps } from \"react\";\nimport { cn } from \"@/lib/folio-utils\";\nexport function Card({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] px-5 py-4 text-kumo-default shadow-folio-card\",\n        className,\n      )}\n    />\n  );\n}\n"
     },
     {
       "path": "registry/lib/folio-utils.ts",

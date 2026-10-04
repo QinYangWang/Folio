@@ -5,7 +5,7 @@ export function Card({ className, ...props }: ComponentProps<"div">) {
     <div
       {...props}
       className={cn(
-        "rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] p-5 text-kumo-default shadow-folio-card",
+        "rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] px-5 py-4 text-kumo-default shadow-folio-card",
         className,
       )}
     />

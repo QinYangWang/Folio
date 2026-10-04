@@ -6,7 +6,13 @@ import {
   useIsPresent,
   useReducedMotion,
 } from "motion/react";
-import { Modal, ModalOverlay } from "react-aria-components";
+import {
+  Modal,
+  ModalOverlay,
+  Heading as AriaHeading,
+  type HeadingProps,
+} from "react-aria-components";
+import { cn } from "@/lib/folio-utils";
 
 const MotionOverlay = motion.create(ModalOverlay);
 const MotionModal = motion.create(Modal);
@@ -60,7 +66,7 @@ export function AnimatedOverlay({
 
 export function AnimatedModal({
   children,
-  className = "w-full max-w-lg max-h-[90vh] overflow-auto rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] p-6 text-kumo-default shadow-folio-card",
+  className = "w-full max-w-lg max-h-[90vh] overflow-auto rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] px-6 py-5 text-sm text-kumo-default shadow-folio-card",
 }: {
   children: ReactNode;
   className?: string;
@@ -79,5 +85,18 @@ export function AnimatedModal({
   );
 }
 
+/** Dialog title: 16px semibold (headings may exceed 14px; never font-bold). */
+export function Heading({ className, ...props }: HeadingProps) {
+  return (
+    <AriaHeading
+      {...props}
+      className={cn(
+        "text-base leading-6 font-semibold text-kumo-default",
+        className,
+      )}
+    />
+  );
+}
+
 export { DialogTrigger } from "react-aria-components";
-export { Dialog, Heading } from "react-aria-components";
+export { Dialog } from "react-aria-components";

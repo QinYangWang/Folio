@@ -19,7 +19,7 @@ export const CalendarGridHeader = styled(
 );
 export const CalendarHeaderCell = styled(
   AriaCalendarHeaderCell,
-  "p-1 text-xs font-medium",
+  "px-1 py-1.5 text-sm font-medium",
 );
 export const CalendarGridBody = styled(AriaCalendarGridBody, "");
 export const CalendarCell = styled(

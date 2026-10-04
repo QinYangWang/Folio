@@ -11,7 +11,7 @@ export const ColorSwatchPicker = styled(
 );
 export const ColorSwatchPickerItem = styled(
   AriaColorSwatchPickerItem,
-  "rounded-lg p-1 data-[selected]:ring-2 ring-kumo-focus outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40",
+  "rounded-[10px] p-1 data-[selected]:ring-2 ring-kumo-focus outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40",
 );
 export const ColorSwatch = styled(
   AriaColorSwatch,

@@ -33,7 +33,7 @@ export default function Example() {
         <Button aria-label="Choose dates">▦</Button>
       </Group>
       <Popover>
-        <Dialog className="p-3 outline-none">
+        <Dialog className="px-3 py-2.5 outline-none">
           <RangeCalendar>
             <div className="flex items-center justify-between gap-3">
               <Button slot="previous" aria-label="Previous month">

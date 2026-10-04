@@ -31,6 +31,16 @@ npm run build
 
 Vite serves `apps/docs`; production output is `dist`. Dev/build regenerate the registry and theme. Run `npm run registry:build` after changing registry source during development to refresh downloadable JSON.
 
+## Skills
+
+Component design follows Cloudflare's [Kumo design skill](https://kumo-ui.com/skill/), vendored at `.agents/skills/kumo-design/SKILL.md` and pinned in `skills-lock.json`. Coding agents that read `.agents/skills` (and `AGENTS.md`) load it automatically. `AGENTS.md` maps Kumo names to Folio equivalents, for example `LayerCard` to `Card` and `ring-kumo-line` to `shadow-folio-card`.
+
+```sh
+npm run test:design   # static check for the machine-verifiable rules
+```
+
+Progress per rule and per component is tracked in [`docs/kumo-design-progress.md`](docs/kumo-design-progress.md).
+
 ## Component reference
 
 The catalog covers all 54 component families in the [React Aria component sidebar](https://react-aria.adobe.com/Button), plus Dialog, Input, TextArea, Label and Folio’s Alert, Avatar, Badge and Card. There are 62 individual pages and installable items. Compound parts live beside their parent in the same source file. Toast explicitly exposes the upstream unstable API and is marked alpha.

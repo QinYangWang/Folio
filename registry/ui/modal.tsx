@@ -10,5 +10,5 @@ export const ModalOverlay = styled(
 );
 export const Modal = styled(
   AriaModal,
-  "w-full max-w-lg rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] p-6 text-kumo-default shadow-folio-card",
+  "w-full max-w-lg rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] px-6 py-5 text-kumo-default shadow-folio-card",
 );

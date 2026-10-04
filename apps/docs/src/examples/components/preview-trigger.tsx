@@ -10,9 +10,9 @@ export default function Example() {
     <PreviewTrigger>
       <Button>Preview project</Button>
       <Popover>
-        <Dialog className="p-3 outline-none">
+        <Dialog className="px-3 py-2.5 outline-none">
           <Heading slot="title">Folio workspace</Heading>
-          <p className="mt-2">A shared home for your next idea.</p>
+          <p className="mt-1 text-kumo-subtle">A shared home for your next idea.</p>
         </Dialog>
       </Popover>
     </PreviewTrigger>

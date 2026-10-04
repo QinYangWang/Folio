@@ -12,9 +12,13 @@ export default function Example() {
         <Modal>
           <Dialog>
             {({ close }) => (
-              <div className="space-y-4">
-                <Heading slot="title">A moment of focus</Heading>
-                <p>Keyboard focus stays here until you close this dialog.</p>
+              <div className="grid justify-items-start gap-4">
+                <div className="grid gap-1">
+                  <Heading slot="title">A moment of focus</Heading>
+                  <p className="text-kumo-subtle">
+                    Keyboard focus stays here until you close this dialog.
+                  </p>
+                </div>
                 <Button onPress={close}>Close</Button>
               </div>
             )}

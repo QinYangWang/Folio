@@ -49,11 +49,11 @@ export function TextField({
         />
       </div>
       {description && (
-        <Text slot="description" className="text-xs text-kumo-subtle">
+        <Text slot="description" className="text-sm text-kumo-subtle">
           {description}
         </Text>
       )}
-      <FieldError className="text-xs text-kumo-danger">
+      <FieldError className="text-sm text-kumo-danger">
         {errorMessage}
       </FieldError>
     </AriaTextField>
