@@ -5,7 +5,7 @@
   "title": "Tooltip",
   "description": "Folio tooltip: semantic colors and tactile surfaces.",
   "dependencies": [
-    "react-aria-components",
+    "react-aria-components@^1.21.1",
     "motion"
   ],
   "files": [

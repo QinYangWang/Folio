@@ -1,7 +1,8 @@
 import { registryUrl } from "./lib/registry-url";
 import { Handbook } from "./pages/handbook";
 import { BlocksPage } from "./pages/blocks";
-import { snippets } from "./lib/snippets";
+import { catalog, componentCategories } from "./lib/catalog";
+import { ComponentPage } from "./pages/component";
 import { Preview } from "./examples/component-preview";
 import {
   AnimatePresence,
@@ -41,9 +42,10 @@ const groups = [
   { title: "Library", items: ["Components", "Blocks", "Icons"] },
   { title: "Resources", items: ["Design principles", "Changelog", "Roadmap"] },
 ];
-const items = [
+const items: string[] = catalog.map((item) => item.name);
+const featured = [
   "Button",
-  "Input",
+  "Text Field",
   "Checkbox",
   "Switch",
   "Badge",
@@ -55,6 +57,9 @@ const items = [
   "Alert",
   "Tooltip",
 ];
+function readRoute() {
+  return window.location.hash.replace(/^#\/?/, "") || "components";
+}
 const icons: Record<string, ReactNode> = {
   Introduction: <BookOpen />,
   Installation: <Terminal />,
@@ -77,11 +82,42 @@ function Logo() {
 
 function App() {
   const reduced = useReducedMotion();
-  const [page, setPage] = useState("Components");
+  const [route, setRoute] = useState(readRoute);
+  const slug = route.startsWith("components/") ? route.slice(11) : null;
+  const page = slug
+    ? "Components"
+    : groups
+        .flatMap((group) => group.items)
+        .find((name) => name.toLowerCase().replaceAll(" ", "-") === route) ||
+      "Components";
+  useEffect(() => {
+    const update = () => {
+      setRoute(readRoute());
+      setMobile(false);
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("hashchange", update);
+    return () => window.removeEventListener("hashchange", update);
+  }, []);
+  useEffect(() => {
+    if (!slug) document.title = `${page} · Folio UI`;
+    else
+      document
+        .querySelector('.component-navigation [aria-current="page"]')
+        ?.scrollIntoView({ block: "nearest" });
+  }, [page, slug]);
+  function setPage(name: string) {
+    navigate(name);
+  }
+  function openComponent(name: string) {
+    const item = catalog.find((item) => item.name === name);
+    if (item) window.location.hash = `/components/${item.slug}`;
+    setMobile(false);
+  }
+
   const [category, setCategory] = useState("All components");
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
   const [dark, setDark] = useState(
     () => window.matchMedia("(prefers-color-scheme: dark)").matches,
   );
@@ -109,7 +145,7 @@ function App() {
     document.documentElement.dataset.mode = dark ? "dark" : "light";
   }, [dark]);
   function navigate(p: string) {
-    setPage(p);
+    window.location.hash = `/${p.toLowerCase().replaceAll(" ", "-")}`;
     setQuery("");
     setMobile(false);
   }
@@ -121,19 +157,13 @@ function App() {
       setToast("Clipboard unavailable. Select and copy the code.");
     }
   }
-  const filtered = items.filter(
-    (n) =>
-      n.toLowerCase().includes(query.toLowerCase()) &&
-      (category === "All components" ||
-        (category === "Inputs"
-          ? ["Button", "Input", "Checkbox", "Switch", "Select"]
-          : category === "Data display"
-            ? ["Badge", "Card", "Avatar"]
-            : category === "Feedback"
-              ? ["Alert", "Tooltip", "Dialog"]
-              : ["Tabs"]
-        ).includes(n)),
-  );
+  const filtered = catalog
+    .filter(
+      (item) =>
+        item.name.toLowerCase().includes(query.toLowerCase()) &&
+        (category === "All components" || item.category === category),
+    )
+    .map((item) => item.name);
 
   return (
     <div className="app">
@@ -165,13 +195,40 @@ function App() {
                 >
                   {icons[n] || <span className="nav-dot" />}
                   {n}
-                  {n === "Components" && <span className="nav-count">12</span>}
+                  {n === "Components" && (
+                    <span className="nav-count">{catalog.length}</span>
+                  )}
                   {n === "Blocks" && <span className="tiny-pro">PRO</span>}
                   {n === "Changelog" && <span className="new-dot" />}
                 </button>
               ))}
             </div>
           ))}
+          <div
+            className="component-navigation"
+            aria-label="Component reference"
+          >
+            {componentCategories.map((category) => (
+              <div className="nav-group" key={category}>
+                <p>{category}</p>
+                {catalog
+                  .filter((item) => item.category === category)
+                  .map((item) => (
+                    <a
+                      key={item.slug}
+                      href={`#/components/${item.slug}`}
+                      className={
+                        slug === item.slug ? "nav-item active" : "nav-item"
+                      }
+                      aria-current={slug === item.slug ? "page" : undefined}
+                    >
+                      {item.name}
+                      {item.alpha && <span className="tiny-pro">α</span>}
+                    </a>
+                  ))}
+              </div>
+            ))}
+          </div>
         </nav>
         <div className="sidebar-bottom">
           <div className="pro-card">
@@ -209,7 +266,12 @@ function App() {
             </button>
             <span>Library</span>
             <ChevronRight size={13} />
-            <strong>{page}</strong>
+            <strong>
+              {slug
+                ? catalog.find((item) => item.slug === slug)?.name ||
+                  "Not found"
+                : page}
+            </strong>
           </div>
           <div className="header-actions">
             <a
@@ -236,7 +298,9 @@ function App() {
               What’s new <ArrowRight size={13} />
             </button>
           </div>
-          {page === "Components" ? (
+          {slug ? (
+            <ComponentPage key={slug} slug={slug} copy={copy} />
+          ) : page === "Components" ? (
             <>
               <section className="hero">
                 <div className="eyebrow">
@@ -261,9 +325,7 @@ function App() {
                   <button
                     className="install-command"
                     onClick={() =>
-                      copy(
-                        `npx shadcn@latest add ${registryUrl("button")}`,
-                      )
+                      copy(`npx shadcn@latest add ${registryUrl("button")}`)
                     }
                   >
                     <span>$</span> npx shadcn add …/r/button.json{" "}
@@ -298,7 +360,7 @@ function App() {
                 <div className="section-heading">
                   <div>
                     <h2>
-                      Components <span>12</span>
+                      Components <span>{catalog.length}</span>
                     </h2>
                     <p>The essentials, with nothing left to chance.</p>
                   </div>
@@ -313,13 +375,7 @@ function App() {
                 <div className="catalog-toolbar">
                   <LayoutGroup id="catalog-filters">
                     <div className="filters">
-                      {[
-                        "All components",
-                        "Inputs",
-                        "Data display",
-                        "Feedback",
-                        "Navigation",
-                      ].map((c) => (
+                      {["All components", ...componentCategories].map((c) => (
                         <button
                           key={c}
                           className={category === c ? "selected" : ""}
@@ -366,16 +422,28 @@ function App() {
                       key={name}
                     >
                       <div className="component-preview">
-                        <Preview
-                          name={name}
-                          setDialog={setDialog}
-                          setToast={setToast}
-                          setPage={setPage}
-                        />
+                        {featured.includes(name) ? (
+                          <Preview
+                            name={name === "Text Field" ? "Input" : name}
+                            setDialog={setDialog}
+                            setToast={setToast}
+                            setPage={setPage}
+                          />
+                        ) : (
+                          <div className="catalog-placeholder">
+                            <Box size={25} />
+                            <span>
+                              {
+                                catalog.find((item) => item.name === name)
+                                  ?.category
+                              }
+                            </span>
+                          </div>
+                        )}
                       </div>
-                      <button
+                      <a
                         className="component-caption"
-                        onClick={() => setSelected(name)}
+                        href={`#/components/${catalog.find((item) => item.name === name)?.slug}`}
                       >
                         <div>
                           <strong>{name}</strong>
@@ -384,27 +452,13 @@ function App() {
                           )}
                           <p>
                             {
-                              (
-                                {
-                                  Button: "Actions that feel right.",
-                                  Input: "A great start to every form.",
-                                  Checkbox: "Small choices, clearly made.",
-                                  Switch: "A simple change of state.",
-                                  Badge: "A little context goes a long way.",
-                                  Card: "Give your content a home.",
-                                  Tabs: "Keep everything in its place.",
-                                  Dialog: "A moment of focus.",
-                                  Select: "Good choices, made easy.",
-                                  Avatar: "Put a face to the name.",
-                                  Alert: "The right message at the right time.",
-                                  Tooltip: "Helpful details, within reach.",
-                                } as Record<string, string>
-                              )[name]
-                            }
+                              catalog.find((item) => item.name === name)
+                                ?.description
+                            }{" "}
                           </p>
                         </div>
                         <ArrowUpRight size={16} />
-                      </button>
+                      </a>
                     </motion.article>
                   ))}
                 </motion.div>
@@ -453,47 +507,6 @@ function App() {
           </footer>
         </main>
       </div>
-      <AnimatedOverlay
-        isOpen={!!selected}
-        onOpenChange={(o) => !o && setSelected(null)}
-      >
-        <AnimatedModal className="modal">
-          <Dialog>
-            {({ close }) => (
-              <>
-                <div className="modal-heading">
-                  <Heading slot="title">{selected}</Heading>
-                  <Button variant="ghost" onPress={close} aria-label="Close">
-                    <X size={18} />
-                  </Button>
-                </div>
-                <div className="modal-preview">
-                  {selected && (
-                    <Preview
-                      name={selected}
-                      setDialog={setDialog}
-                      setToast={setToast}
-                      setPage={setPage}
-                    />
-                  )}
-                </div>
-                <h3>Install</h3>
-                <pre>{`npx shadcn@latest add ${registryUrl(selected === "Input" ? "text-field" : selected?.toLowerCase() || "button")}`}</pre>
-                <h3>Usage</h3>
-                <pre>{selected && snippets[selected]}</pre>
-                <Button
-                  onPress={() => copy(selected ? snippets[selected] : "")}
-                >
-                  <Copy size={14} /> Copy code
-                </Button>
-                <p className="muted">
-                  {"Available as an independent registry component."}
-                </p>
-              </>
-            )}
-          </Dialog>
-        </AnimatedModal>
-      </AnimatedOverlay>
       <AnimatedOverlay isOpen={searchOpen} onOpenChange={setSearchOpen}>
         <AnimatedModal className="modal search-modal">
           <Dialog aria-label="Search documentation">
@@ -518,7 +531,7 @@ function App() {
                     onClick={() => {
                       setSearchOpen(false);
                       setQuery("");
-                      items.includes(n) ? setSelected(n) : navigate(n);
+                      items.includes(n) ? openComponent(n) : navigate(n);
                     }}
                   >
                     <span>{n}</span>

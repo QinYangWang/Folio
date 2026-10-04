@@ -88,7 +88,7 @@
     }
   },
   "dependencies": [
-    "react-aria-components",
+    "react-aria-components@^1.21.1",
     "motion",
     "clsx",
     "tailwind-merge",
@@ -153,7 +153,7 @@
       "path": "registry/ui/dialog.tsx",
       "type": "registry:ui",
       "target": "@ui/dialog.tsx",
-      "content": "\"use client\";\nimport { type ReactNode } from \"react\";\nimport {\n  AnimatePresence,\n  motion,\n  useIsPresent,\n  useReducedMotion,\n} from \"motion/react\";\nimport { Modal, ModalOverlay } from \"react-aria-components\";\n\nconst MotionOverlay = motion.create(ModalOverlay);\nconst MotionModal = motion.create(Modal);\n\n// Keep React Aria's portal, focus trap, scroll lock and restore-focus lifecycle.\nfunction OverlayPresence({\n  children,\n  onOpenChange,\n}: {\n  children: ReactNode;\n  onOpenChange?: (open: boolean) => void;\n}) {\n  const present = useIsPresent();\n  const reduced = useReducedMotion();\n  return (\n    <MotionOverlay\n      isOpen={present}\n      isExiting={!present}\n      onOpenChange={onOpenChange}\n      isDismissable\n      className=\"fixed inset-0 z-50 flex items-center justify-center bg-folio-backdrop p-5 backdrop-blur-sm\"\n      initial={{ opacity: 0 }}\n      animate={{ opacity: 1 }}\n      exit={{ opacity: 0 }}\n      transition={{ duration: reduced ? 0 : 0.16 }}\n    >\n      {children}\n    </MotionOverlay>\n  );\n}\n\nexport function AnimatedOverlay({\n  isOpen,\n  onOpenChange,\n  children,\n}: {\n  isOpen: boolean;\n  onOpenChange?: (open: boolean) => void;\n  children: ReactNode;\n}) {\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <OverlayPresence key=\"overlay\" onOpenChange={onOpenChange}>\n          {children}\n        </OverlayPresence>\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport function AnimatedModal({\n  children,\n  className = \"w-full max-w-lg max-h-[90vh] overflow-auto rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] p-6 text-kumo-default shadow-folio-card\",\n}: {\n  children: ReactNode;\n  className?: string;\n}) {\n  const reduced = useReducedMotion();\n  return (\n    <MotionModal\n      className={className}\n      initial={{ opacity: 0, y: reduced ? 0 : 12, scale: reduced ? 1 : 0.98 }}\n      animate={{ opacity: 1, y: 0, scale: 1 }}\n      exit={{ opacity: 0, y: reduced ? 0 : 6, scale: reduced ? 1 : 0.99 }}\n      transition={{ duration: reduced ? 0 : 0.18, ease: [0.22, 1, 0.36, 1] }}\n    >\n      {children}\n    </MotionModal>\n  );\n}\n"
+      "content": "\"use client\";\nimport { type ReactNode } from \"react\";\nimport {\n  AnimatePresence,\n  motion,\n  useIsPresent,\n  useReducedMotion,\n} from \"motion/react\";\nimport { Modal, ModalOverlay } from \"react-aria-components\";\n\nconst MotionOverlay = motion.create(ModalOverlay);\nconst MotionModal = motion.create(Modal);\n\n// Keep React Aria's portal, focus trap, scroll lock and restore-focus lifecycle.\nfunction OverlayPresence({\n  children,\n  onOpenChange,\n}: {\n  children: ReactNode;\n  onOpenChange?: (open: boolean) => void;\n}) {\n  const present = useIsPresent();\n  const reduced = useReducedMotion();\n  return (\n    <MotionOverlay\n      isOpen={present}\n      isExiting={!present}\n      onOpenChange={onOpenChange}\n      isDismissable\n      className=\"fixed inset-0 z-50 flex items-center justify-center bg-folio-backdrop p-5 backdrop-blur-sm\"\n      initial={{ opacity: 0 }}\n      animate={{ opacity: 1 }}\n      exit={{ opacity: 0 }}\n      transition={{ duration: reduced ? 0 : 0.16 }}\n    >\n      {children}\n    </MotionOverlay>\n  );\n}\n\nexport function AnimatedOverlay({\n  isOpen,\n  onOpenChange,\n  children,\n}: {\n  isOpen: boolean;\n  onOpenChange?: (open: boolean) => void;\n  children: ReactNode;\n}) {\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <OverlayPresence key=\"overlay\" onOpenChange={onOpenChange}>\n          {children}\n        </OverlayPresence>\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport function AnimatedModal({\n  children,\n  className = \"w-full max-w-lg max-h-[90vh] overflow-auto rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] p-6 text-kumo-default shadow-folio-card\",\n}: {\n  children: ReactNode;\n  className?: string;\n}) {\n  const reduced = useReducedMotion();\n  return (\n    <MotionModal\n      className={className}\n      initial={{ opacity: 0, y: reduced ? 0 : 12, scale: reduced ? 1 : 0.98 }}\n      animate={{ opacity: 1, y: 0, scale: 1 }}\n      exit={{ opacity: 0, y: reduced ? 0 : 6, scale: reduced ? 1 : 0.99 }}\n      transition={{ duration: reduced ? 0 : 0.18, ease: [0.22, 1, 0.36, 1] }}\n    >\n      {children}\n    </MotionModal>\n  );\n}\n\nexport { DialogTrigger } from \"react-aria-components\";\nexport { Dialog, Heading } from \"react-aria-components\";\n"
     },
     {
       "path": "registry/ui/select.tsx",
@@ -178,6 +178,312 @@
       "type": "registry:ui",
       "target": "@ui/tooltip.tsx",
       "content": "\"use client\";\nimport { type ReactNode } from \"react\";\nimport {\n  TooltipTrigger,\n  Tooltip as AriaTooltip,\n  type TooltipProps,\n} from \"react-aria-components\";\nimport { motion, useReducedMotion } from \"motion/react\";\nexport function Tooltip({\n  children,\n  content,\n  delay = 400,\n  ...props\n}: Omit<TooltipProps, \"children\"> & {\n  children: ReactNode;\n  content: ReactNode;\n  delay?: number;\n}) {\n  const reduced = useReducedMotion();\n  return (\n    <TooltipTrigger delay={delay}>\n      {children}\n      <AriaTooltip\n        {...props}\n        className=\"z-50 rounded-md bg-kumo-contrast px-3 py-2 text-xs text-kumo-inverse shadow-folio-raised\"\n      >\n        <motion.div\n          initial={{ opacity: 0, y: reduced ? 0 : 3 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: reduced ? 0 : 0.12 }}\n        >\n          {content}\n        </motion.div>\n      </AriaTooltip>\n    </TooltipTrigger>\n  );\n}\n"
+    },
+    {
+      "path": "registry/ui/autocomplete.tsx",
+      "type": "registry:ui",
+      "target": "@ui/autocomplete.tsx",
+      "content": "\"use client\";\nimport {\n  SearchField as AriaSearchField,\n  Input as AriaInput,\n  ListBox as AriaListBox,\n  ListBoxItem as AriaListBoxItem,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const SearchField = styled(\n  AriaSearchField,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const Input = styled(\n  AriaInput,\n  \"min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40\",\n);\nexport const ListBox = styled(\n  AriaListBox,\n  \"rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const ListBoxItem = styled(\n  AriaListBoxItem,\n  \"flex cursor-default items-center gap-2 rounded-md px-3 py-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[focused]:bg-kumo-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport { Autocomplete } from \"react-aria-components\";\n"
+    },
+    {
+      "path": "registry/lib/folio-styled.tsx",
+      "type": "registry:lib",
+      "target": "@lib/folio-styled.tsx",
+      "content": "\"use client\";\nimport { createElement, forwardRef, type ComponentType } from \"react\";\nimport { composeRenderProps } from \"react-aria-components\";\nimport { cn } from \"@/lib/folio-utils\";\n\n/** Preserve the original Aria call signature (including collection generics), refs,\n * slots, render props and controlled state while supplying default Tailwind styles. */\nexport function styled<T extends ComponentType<any>>(\n  Component: T,\n  classes: string,\n): T {\n  const base = cn(\n    \"transition-[color,background-color,box-shadow,opacity] duration-150 motion-reduce:transition-none\",\n    classes,\n  );\n  const Styled = forwardRef<unknown, any>((props, ref) =>\n    createElement(Component, {\n      ...props,\n      ref,\n      className:\n        typeof props.className === \"function\"\n          ? composeRenderProps(props.className, (className) =>\n              cn(base, className),\n            )\n          : cn(base, props.className),\n    }),\n  );\n  Styled.displayName = `Folio(${Component.displayName || Component.name || \"Component\"})`;\n  return Styled as unknown as T;\n}\n"
+    },
+    {
+      "path": "registry/ui/breadcrumbs.tsx",
+      "type": "registry:ui",
+      "target": "@ui/breadcrumbs.tsx",
+      "content": "\"use client\";\nimport {\n  Breadcrumbs as AriaBreadcrumbs,\n  Breadcrumb as AriaBreadcrumb,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Breadcrumbs = styled(\n  AriaBreadcrumbs,\n  \"flex flex-wrap items-center gap-2 text-sm text-kumo-subtle\",\n);\nexport const Breadcrumb = styled(\n  AriaBreadcrumb,\n  'inline-flex items-center gap-2 after:content-[\"/\"] after:ml-2 last:after:hidden',\n);\n"
+    },
+    {
+      "path": "registry/ui/checkbox-group.tsx",
+      "type": "registry:ui",
+      "target": "@ui/checkbox-group.tsx",
+      "content": "\"use client\";\nimport { CheckboxGroup as AriaCheckboxGroup } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const CheckboxGroup = styled(\n  AriaCheckboxGroup,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\n"
+    },
+    {
+      "path": "registry/ui/color-area.tsx",
+      "type": "registry:ui",
+      "target": "@ui/color-area.tsx",
+      "content": "\"use client\";\nimport {\n  ColorArea as AriaColorArea,\n  ColorThumb as AriaColorThumb,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ColorArea = styled(\n  AriaColorArea,\n  \"relative size-48 rounded-lg shadow-folio-inset data-[disabled]:opacity-40\",\n);\nexport const ColorThumb = styled(\n  AriaColorThumb,\n  \"size-5 rounded-full border-2 border-folio-on-brand shadow-folio-raised outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/color-field.tsx",
+      "type": "registry:ui",
+      "target": "@ui/color-field.tsx",
+      "content": "\"use client\";\nimport {\n  ColorField as AriaColorField,\n  Input as AriaInput,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ColorField = styled(\n  AriaColorField,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const Input = styled(\n  AriaInput,\n  \"min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/color-picker.tsx",
+      "type": "registry:ui",
+      "target": "@ui/color-picker.tsx",
+      "content": "\"use client\";\nexport { ColorPicker } from \"react-aria-components\";\n"
+    },
+    {
+      "path": "registry/ui/color-slider.tsx",
+      "type": "registry:ui",
+      "target": "@ui/color-slider.tsx",
+      "content": "\"use client\";\nimport {\n  ColorSlider as AriaColorSlider,\n  SliderTrack as AriaSliderTrack,\n  ColorThumb as AriaColorThumb,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ColorSlider = styled(\n  AriaColorSlider,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const SliderTrack = styled(\n  AriaSliderTrack,\n  \"relative h-5 w-full rounded-full shadow-folio-inset\",\n);\nexport const ColorThumb = styled(\n  AriaColorThumb,\n  \"top-1/2 size-5 rounded-full bg-folio-on-brand shadow-folio-knob ring-1 ring-kumo-line outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/color-swatch.tsx",
+      "type": "registry:ui",
+      "target": "@ui/color-swatch.tsx",
+      "content": "\"use client\";\nimport { ColorSwatch as AriaColorSwatch } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ColorSwatch = styled(\n  AriaColorSwatch,\n  \"size-9 rounded-lg ring-1 ring-kumo-line shadow-folio-raised\",\n);\n"
+    },
+    {
+      "path": "registry/ui/color-swatch-picker.tsx",
+      "type": "registry:ui",
+      "target": "@ui/color-swatch-picker.tsx",
+      "content": "\"use client\";\nimport {\n  ColorSwatchPicker as AriaColorSwatchPicker,\n  ColorSwatchPickerItem as AriaColorSwatchPickerItem,\n  ColorSwatch as AriaColorSwatch,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ColorSwatchPicker = styled(\n  AriaColorSwatchPicker,\n  \"flex flex-wrap gap-3\",\n);\nexport const ColorSwatchPickerItem = styled(\n  AriaColorSwatchPickerItem,\n  \"rounded-lg p-1 data-[selected]:ring-2 ring-kumo-focus outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const ColorSwatch = styled(\n  AriaColorSwatch,\n  \"size-8 rounded-md ring-1 ring-kumo-line\",\n);\n"
+    },
+    {
+      "path": "registry/ui/color-wheel.tsx",
+      "type": "registry:ui",
+      "target": "@ui/color-wheel.tsx",
+      "content": "\"use client\";\nimport {\n  ColorWheel as AriaColorWheel,\n  ColorWheelTrack as AriaColorWheelTrack,\n  ColorThumb as AriaColorThumb,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ColorWheel = styled(AriaColorWheel, \"relative size-48\");\nexport const ColorWheelTrack = styled(\n  AriaColorWheelTrack,\n  \"size-full rounded-full shadow-folio-inset\",\n);\nexport const ColorThumb = styled(\n  AriaColorThumb,\n  \"size-5 rounded-full border-2 border-folio-on-brand shadow-folio-knob outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/combo-box.tsx",
+      "type": "registry:ui",
+      "target": "@ui/combo-box.tsx",
+      "content": "\"use client\";\nimport {\n  ComboBox as AriaComboBox,\n  Input as AriaInput,\n  Popover as AriaPopover,\n  ListBox as AriaListBox,\n  ListBoxItem as AriaListBoxItem,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ComboBox = styled(\n  AriaComboBox,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const Input = styled(\n  AriaInput,\n  \"min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40 w-full\",\n);\nexport const Popover = styled(\n  AriaPopover,\n  \"z-50 min-w-52 rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const ListBox = styled(AriaListBox, \"outline-none\");\nexport const ListBoxItem = styled(\n  AriaListBoxItem,\n  \"flex cursor-default items-center gap-2 rounded-md px-3 py-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[focused]:bg-kumo-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/date-field.tsx",
+      "type": "registry:ui",
+      "target": "@ui/date-field.tsx",
+      "content": "\"use client\";\nimport {\n  DateField as AriaDateField,\n  DateInput as AriaDateInput,\n  DateSegment as AriaDateSegment,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const DateField = styled(\n  AriaDateField,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const DateInput = styled(\n  AriaDateInput,\n  \"flex items-center min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40\",\n);\nexport const DateSegment = styled(\n  AriaDateSegment,\n  \"rounded px-0.5 tabular-nums data-[placeholder]:text-kumo-placeholder focus:bg-kumo-brand focus:text-folio-on-brand outline-none\",\n);\n"
+    },
+    {
+      "path": "registry/ui/date-picker.tsx",
+      "type": "registry:ui",
+      "target": "@ui/date-picker.tsx",
+      "content": "\"use client\";\nimport {\n  DatePicker as AriaDatePicker,\n  DateInput as AriaDateInput,\n  DateSegment as AriaDateSegment,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const DatePicker = styled(\n  AriaDatePicker,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const DateInput = styled(\n  AriaDateInput,\n  \"flex items-center min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40\",\n);\nexport const DateSegment = styled(\n  AriaDateSegment,\n  \"rounded px-0.5 tabular-nums data-[placeholder]:text-kumo-placeholder focus:bg-kumo-brand focus:text-folio-on-brand outline-none\",\n);\n"
+    },
+    {
+      "path": "registry/ui/date-range-picker.tsx",
+      "type": "registry:ui",
+      "target": "@ui/date-range-picker.tsx",
+      "content": "\"use client\";\nimport {\n  DateRangePicker as AriaDateRangePicker,\n  DateInput as AriaDateInput,\n  DateSegment as AriaDateSegment,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const DateRangePicker = styled(\n  AriaDateRangePicker,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const DateInput = styled(\n  AriaDateInput,\n  \"flex items-center min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40\",\n);\nexport const DateSegment = styled(\n  AriaDateSegment,\n  \"rounded px-0.5 tabular-nums data-[placeholder]:text-kumo-placeholder focus:bg-kumo-brand focus:text-folio-on-brand outline-none\",\n);\n"
+    },
+    {
+      "path": "registry/ui/disclosure.tsx",
+      "type": "registry:ui",
+      "target": "@ui/disclosure.tsx",
+      "content": "\"use client\";\nimport {\n  Disclosure as AriaDisclosure,\n  DisclosurePanel as AriaDisclosurePanel,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Disclosure = styled(\n  AriaDisclosure,\n  \"rounded-lg bg-kumo-base p-4 shadow-folio-card\",\n);\nexport const DisclosurePanel = styled(\n  AriaDisclosurePanel,\n  \"pt-3 text-sm text-kumo-subtle\",\n);\n"
+    },
+    {
+      "path": "registry/ui/disclosure-group.tsx",
+      "type": "registry:ui",
+      "target": "@ui/disclosure-group.tsx",
+      "content": "\"use client\";\nimport {\n  DisclosureGroup as AriaDisclosureGroup,\n  Disclosure as AriaDisclosure,\n  DisclosurePanel as AriaDisclosurePanel,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const DisclosureGroup = styled(\n  AriaDisclosureGroup,\n  \"flex flex-col gap-3\",\n);\nexport const Disclosure = styled(\n  AriaDisclosure,\n  \"rounded-lg bg-kumo-base p-4 shadow-folio-card\",\n);\nexport const DisclosurePanel = styled(\n  AriaDisclosurePanel,\n  \"pt-3 text-sm text-kumo-subtle\",\n);\n"
+    },
+    {
+      "path": "registry/ui/drop-zone.tsx",
+      "type": "registry:ui",
+      "target": "@ui/drop-zone.tsx",
+      "content": "\"use client\";\nimport { DropZone as AriaDropZone } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const DropZone = styled(\n  AriaDropZone,\n  \"flex min-h-36 flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-kumo-line bg-kumo-recessed p-6 text-sm text-kumo-subtle data-[drop-target]:border-kumo-brand data-[drop-target]:bg-kumo-info-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/file-trigger.tsx",
+      "type": "registry:ui",
+      "target": "@ui/file-trigger.tsx",
+      "content": "\"use client\";\nexport { FileTrigger } from \"react-aria-components\";\n"
+    },
+    {
+      "path": "registry/ui/form.tsx",
+      "type": "registry:ui",
+      "target": "@ui/form.tsx",
+      "content": "\"use client\";\nimport { Form as AriaForm } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Form = styled(\n  AriaForm,\n  \"flex w-full flex-col gap-4 text-sm text-kumo-default\",\n);\n"
+    },
+    {
+      "path": "registry/ui/grid-list.tsx",
+      "type": "registry:ui",
+      "target": "@ui/grid-list.tsx",
+      "content": "\"use client\";\nimport {\n  GridList as AriaGridList,\n  GridListItem as AriaGridListItem,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const GridList = styled(\n  AriaGridList,\n  \"rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const GridListItem = styled(\n  AriaGridListItem,\n  \"flex cursor-default items-center gap-2 rounded-md px-3 py-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[focused]:bg-kumo-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/group.tsx",
+      "type": "registry:ui",
+      "target": "@ui/group.tsx",
+      "content": "\"use client\";\nimport { Group as AriaGroup } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Group = styled(\n  AriaGroup,\n  \"flex items-center gap-2 rounded-md text-sm text-kumo-default outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/link.tsx",
+      "type": "registry:ui",
+      "target": "@ui/link.tsx",
+      "content": "\"use client\";\nimport { Link as AriaLink } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Link = styled(\n  AriaLink,\n  \"inline-flex items-center gap-1 rounded text-sm text-kumo-link underline-offset-4 data-[hovered]:underline outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/list-box.tsx",
+      "type": "registry:ui",
+      "target": "@ui/list-box.tsx",
+      "content": "\"use client\";\nimport {\n  ListBox as AriaListBox,\n  ListBoxItem as AriaListBoxItem,\n  ListBoxSection as AriaListBoxSection,\n  Header as AriaHeader,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ListBox = styled(\n  AriaListBox,\n  \"rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const ListBoxItem = styled(\n  AriaListBoxItem,\n  \"flex cursor-default items-center gap-2 rounded-md px-3 py-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[focused]:bg-kumo-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const ListBoxSection = styled(AriaListBoxSection, \"py-1\");\nexport const Header = styled(\n  AriaHeader,\n  \"px-3 py-2 text-xs font-medium text-kumo-subtle\",\n);\n"
+    },
+    {
+      "path": "registry/ui/menu.tsx",
+      "type": "registry:ui",
+      "target": "@ui/menu.tsx",
+      "content": "\"use client\";\nimport {\n  Menu as AriaMenu,\n  MenuItem as AriaMenuItem,\n  MenuSection as AriaMenuSection,\n  Header as AriaHeader,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Menu = styled(\n  AriaMenu,\n  \"rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40 min-w-48 outline-none\",\n);\nexport const MenuItem = styled(\n  AriaMenuItem,\n  \"flex cursor-default items-center gap-2 rounded-md px-3 py-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[focused]:bg-kumo-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const MenuSection = styled(AriaMenuSection, \"py-1\");\nexport const Header = styled(\n  AriaHeader,\n  \"px-3 py-2 text-xs font-medium text-kumo-subtle\",\n);\nexport { MenuTrigger, SubmenuTrigger } from \"react-aria-components\";\n"
+    },
+    {
+      "path": "registry/ui/meter.tsx",
+      "type": "registry:ui",
+      "target": "@ui/meter.tsx",
+      "content": "\"use client\";\nimport { Meter as AriaMeter } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Meter = styled(\n  AriaMeter,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\n"
+    },
+    {
+      "path": "registry/ui/modal.tsx",
+      "type": "registry:ui",
+      "target": "@ui/modal.tsx",
+      "content": "\"use client\";\nimport {\n  ModalOverlay as AriaModalOverlay,\n  Modal as AriaModal,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ModalOverlay = styled(\n  AriaModalOverlay,\n  \"fixed inset-0 z-50 flex items-center justify-center bg-folio-backdrop p-5 backdrop-blur-sm\",\n);\nexport const Modal = styled(\n  AriaModal,\n  \"w-full max-w-lg rounded-xl bg-kumo-base bg-[image:var(--background-image-folio-card)] p-6 text-kumo-default shadow-folio-card\",\n);\n"
+    },
+    {
+      "path": "registry/ui/navigation-tree.tsx",
+      "type": "registry:ui",
+      "target": "@ui/navigation-tree.tsx",
+      "content": "\"use client\";\nimport {\n  NavigationTree as AriaNavigationTree,\n  NavigationTreeItem as AriaNavigationTreeItem,\n  NavigationTreeSection as AriaNavigationTreeSection,\n  NavigationTreeHeader as AriaNavigationTreeHeader,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const NavigationTree = styled(\n  AriaNavigationTree,\n  \"rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const NavigationTreeItem = styled(\n  AriaNavigationTreeItem,\n  \"flex cursor-default items-center gap-2 rounded-md pr-3 pl-[calc(var(--tree-item-level,0)*1rem+0.75rem)] py-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[focused]:bg-kumo-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport { NavigationTreeItemContent } from \"react-aria-components\";\nexport const NavigationTreeSection = styled(AriaNavigationTreeSection, \"py-1\");\nexport const NavigationTreeHeader = styled(\n  AriaNavigationTreeHeader,\n  \"px-3 py-2 text-xs text-kumo-subtle\",\n);\n"
+    },
+    {
+      "path": "registry/ui/number-field.tsx",
+      "type": "registry:ui",
+      "target": "@ui/number-field.tsx",
+      "content": "\"use client\";\nimport {\n  NumberField as AriaNumberField,\n  Input as AriaInput,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const NumberField = styled(\n  AriaNumberField,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const Input = styled(\n  AriaInput,\n  \"min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40 w-24 text-center\",\n);\n"
+    },
+    {
+      "path": "registry/ui/popover.tsx",
+      "type": "registry:ui",
+      "target": "@ui/popover.tsx",
+      "content": "\"use client\";\nimport {\n  Popover as AriaPopover,\n  OverlayArrow as AriaOverlayArrow,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Popover = styled(\n  AriaPopover,\n  \"z-50 min-w-48 rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const OverlayArrow = styled(\n  AriaOverlayArrow,\n  \"fill-kumo-base stroke-kumo-line\",\n);\n"
+    },
+    {
+      "path": "registry/ui/preview-trigger.tsx",
+      "type": "registry:ui",
+      "target": "@ui/preview-trigger.tsx",
+      "content": "\"use client\";\nexport { PreviewTrigger } from \"react-aria-components\";\n"
+    },
+    {
+      "path": "registry/ui/progress-bar.tsx",
+      "type": "registry:ui",
+      "target": "@ui/progress-bar.tsx",
+      "content": "\"use client\";\nimport { ProgressBar as AriaProgressBar } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ProgressBar = styled(\n  AriaProgressBar,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\n"
+    },
+    {
+      "path": "registry/ui/radio-group.tsx",
+      "type": "registry:ui",
+      "target": "@ui/radio-group.tsx",
+      "content": "\"use client\";\nimport {\n  RadioGroup as AriaRadioGroup,\n  Radio as AriaRadio,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const RadioGroup = styled(\n  AriaRadioGroup,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const Radio = styled(\n  AriaRadio,\n  \"before:size-4 before:shrink-0 before:rounded-full before:border before:border-kumo-line before:bg-kumo-control before:shadow-folio-inset before:content-[''] data-[selected]:before:border-[5px] data-[selected]:before:border-kumo-brand group flex cursor-pointer items-center gap-2 rounded-md p-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/search-field.tsx",
+      "type": "registry:ui",
+      "target": "@ui/search-field.tsx",
+      "content": "\"use client\";\nimport {\n  SearchField as AriaSearchField,\n  Input as AriaInput,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const SearchField = styled(\n  AriaSearchField,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const Input = styled(\n  AriaInput,\n  \"min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40 w-full\",\n);\n"
+    },
+    {
+      "path": "registry/ui/separator.tsx",
+      "type": "registry:ui",
+      "target": "@ui/separator.tsx",
+      "content": "\"use client\";\nimport { Separator as AriaSeparator } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Separator = styled(\n  AriaSeparator,\n  \"my-3 border-0 bg-kumo-hairline h-px w-full data-[orientation=vertical]:h-6 data-[orientation=vertical]:w-px\",\n);\n"
+    },
+    {
+      "path": "registry/ui/slider.tsx",
+      "type": "registry:ui",
+      "target": "@ui/slider.tsx",
+      "content": "\"use client\";\nimport {\n  Slider as AriaSlider,\n  SliderOutput as AriaSliderOutput,\n  SliderTrack as AriaSliderTrack,\n  SliderFill as AriaSliderFill,\n  SliderThumb as AriaSliderThumb,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Slider = styled(\n  AriaSlider,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const SliderOutput = styled(\n  AriaSliderOutput,\n  \"text-sm tabular-nums text-kumo-subtle\",\n);\nexport const SliderTrack = styled(\n  AriaSliderTrack,\n  \"relative h-2 w-full rounded-full bg-kumo-fill shadow-folio-inset\",\n);\nexport const SliderFill = styled(\n  AriaSliderFill,\n  \"absolute h-full rounded-full bg-kumo-brand\",\n);\nexport const SliderThumb = styled(\n  AriaSliderThumb,\n  \"top-1/2 size-5 rounded-full bg-folio-on-brand shadow-folio-knob ring-1 ring-kumo-line outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/table.tsx",
+      "type": "registry:ui",
+      "target": "@ui/table.tsx",
+      "content": "\"use client\";\nimport {\n  Table as AriaTable,\n  TableHeader as AriaTableHeader,\n  Column as AriaColumn,\n  TableBody as AriaTableBody,\n  Row as AriaRow,\n  Cell as AriaCell,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Table = styled(\n  AriaTable,\n  \"w-full border-collapse text-left text-sm text-kumo-default outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const TableHeader = styled(AriaTableHeader, \"bg-kumo-recessed\");\nexport const Column = styled(\n  AriaColumn,\n  \"border-b border-kumo-hairline px-3 py-2 font-medium outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const TableBody = styled(AriaTableBody, \"\");\nexport const Row = styled(\n  AriaRow,\n  \"border-b border-kumo-hairline data-[selected]:bg-kumo-info-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const Cell = styled(\n  AriaCell,\n  \"px-3 py-2 outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/tag-group.tsx",
+      "type": "registry:ui",
+      "target": "@ui/tag-group.tsx",
+      "content": "\"use client\";\nimport {\n  TagGroup as AriaTagGroup,\n  TagList as AriaTagList,\n  Tag as AriaTag,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const TagGroup = styled(\n  AriaTagGroup,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const TagList = styled(AriaTagList, \"flex flex-wrap gap-2\");\nexport const Tag = styled(\n  AriaTag,\n  \"flex items-center gap-2 rounded-md bg-kumo-tint px-2 py-1 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/time-field.tsx",
+      "type": "registry:ui",
+      "target": "@ui/time-field.tsx",
+      "content": "\"use client\";\nimport {\n  TimeField as AriaTimeField,\n  DateInput as AriaDateInput,\n  DateSegment as AriaDateSegment,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const TimeField = styled(\n  AriaTimeField,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const DateInput = styled(\n  AriaDateInput,\n  \"flex items-center min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40\",\n);\nexport const DateSegment = styled(\n  AriaDateSegment,\n  \"rounded px-0.5 tabular-nums data-[placeholder]:text-kumo-placeholder focus:bg-kumo-brand focus:text-folio-on-brand outline-none\",\n);\n"
+    },
+    {
+      "path": "registry/ui/toggle-button.tsx",
+      "type": "registry:ui",
+      "target": "@ui/toggle-button.tsx",
+      "content": "\"use client\";\nimport { ToggleButton as AriaToggleButton } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ToggleButton = styled(\n  AriaToggleButton,\n  \"inline-flex min-h-9 items-center justify-center gap-2 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-control)] px-3 py-2 text-sm leading-5 text-kumo-default shadow-folio-raised ring-1 ring-kumo-line data-[pressed]:shadow-folio-pressed outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40 data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[selected]:shadow-folio-pressed\",\n);\n"
+    },
+    {
+      "path": "registry/ui/toggle-button-group.tsx",
+      "type": "registry:ui",
+      "target": "@ui/toggle-button-group.tsx",
+      "content": "\"use client\";\nimport {\n  ToggleButtonGroup as AriaToggleButtonGroup,\n  ToggleButton as AriaToggleButton,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const ToggleButtonGroup = styled(\n  AriaToggleButtonGroup,\n  \"flex flex-wrap gap-1 rounded-lg bg-kumo-recessed p-1 shadow-folio-inset\",\n);\nexport const ToggleButton = styled(\n  AriaToggleButton,\n  \"inline-flex min-h-9 items-center justify-center gap-2 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-control)] px-3 py-2 text-sm leading-5 text-kumo-default shadow-folio-raised ring-1 ring-kumo-line data-[pressed]:shadow-folio-pressed outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40 data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info\",\n);\n"
+    },
+    {
+      "path": "registry/ui/token-field.tsx",
+      "type": "registry:ui",
+      "target": "@ui/token-field.tsx",
+      "content": "\"use client\";\nimport {\n  TokenField as AriaTokenField,\n  TokenInput as AriaTokenInput,\n  Token as AriaToken,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const TokenField = styled(\n  AriaTokenField,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport { TokenFieldValue } from \"react-aria-components\";\nexport const TokenInput = styled(\n  AriaTokenInput,\n  \"min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40\",\n);\nexport const Token = styled(\n  AriaToken,\n  \"inline-flex cursor-default items-center gap-2 rounded-md px-3 py-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[focused]:bg-kumo-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40 bg-kumo-tint\",\n);\n"
+    },
+    {
+      "path": "registry/ui/toolbar.tsx",
+      "type": "registry:ui",
+      "target": "@ui/toolbar.tsx",
+      "content": "\"use client\";\nimport { Toolbar as AriaToolbar } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Toolbar = styled(\n  AriaToolbar,\n  \"flex flex-wrap items-center gap-2 rounded-lg bg-kumo-base p-2 shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/tree.tsx",
+      "type": "registry:ui",
+      "target": "@ui/tree.tsx",
+      "content": "\"use client\";\nimport {\n  Tree as AriaTree,\n  TreeItem as AriaTreeItem,\n  TreeSection as AriaTreeSection,\n  TreeHeader as AriaTreeHeader,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Tree = styled(\n  AriaTree,\n  \"rounded-xl bg-kumo-base p-2 text-sm text-kumo-default shadow-folio-card outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport const TreeItem = styled(\n  AriaTreeItem,\n  \"flex cursor-default items-center gap-2 rounded-md pr-3 pl-[calc(var(--tree-item-level,0)*1rem+0.75rem)] py-2 text-sm text-kumo-default data-[selected]:bg-kumo-info-tint data-[selected]:text-kumo-info data-[focused]:bg-kumo-tint outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\nexport { TreeItemContent } from \"react-aria-components\";\nexport const TreeSection = styled(AriaTreeSection, \"py-1\");\nexport const TreeHeader = styled(\n  AriaTreeHeader,\n  \"px-3 py-2 text-xs text-kumo-subtle\",\n);\n"
+    },
+    {
+      "path": "registry/ui/virtualizer.tsx",
+      "type": "registry:ui",
+      "target": "@ui/virtualizer.tsx",
+      "content": "\"use client\";\nexport {\n  Virtualizer,\n  ListLayout,\n  GridLayout,\n  TableLayout,\n  WaterfallLayout,\n} from \"react-aria-components\";\n"
+    },
+    {
+      "path": "registry/ui/input.tsx",
+      "type": "registry:ui",
+      "target": "@ui/input.tsx",
+      "content": "\"use client\";\nimport { Input as AriaInput } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Input = styled(\n  AriaInput,\n  \"min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/text-area.tsx",
+      "type": "registry:ui",
+      "target": "@ui/text-area.tsx",
+      "content": "\"use client\";\nimport { TextArea as AriaTextArea } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const TextArea = styled(\n  AriaTextArea,\n  \"min-h-9 rounded-md bg-kumo-control bg-[image:var(--background-image-folio-inset)] px-3 py-2 text-sm leading-5 text-kumo-default placeholder:text-kumo-placeholder shadow-folio-inset ring-1 ring-kumo-line outline-none focus:ring-2 focus:ring-kumo-focus disabled:opacity-40 min-h-24 resize-y\",\n);\n"
+    },
+    {
+      "path": "registry/ui/label.tsx",
+      "type": "registry:ui",
+      "target": "@ui/label.tsx",
+      "content": "\"use client\";\nimport { Label as AriaLabel } from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Label = styled(\n  AriaLabel,\n  \"text-sm font-medium leading-5 text-kumo-default\",\n);\n"
+    },
+    {
+      "path": "registry/ui/calendar.tsx",
+      "type": "registry:ui",
+      "target": "@ui/calendar.tsx",
+      "content": "\"use client\";\nimport {\n  Calendar as AriaCalendar,\n  CalendarGrid as AriaCalendarGrid,\n  CalendarGridHeader as AriaCalendarGridHeader,\n  CalendarHeaderCell as AriaCalendarHeaderCell,\n  CalendarGridBody as AriaCalendarGridBody,\n  CalendarCell as AriaCalendarCell,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const Calendar = styled(\n  AriaCalendar,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const CalendarGrid = styled(AriaCalendarGrid, \"border-collapse\");\nexport const CalendarGridHeader = styled(\n  AriaCalendarGridHeader,\n  \"text-kumo-subtle\",\n);\nexport const CalendarHeaderCell = styled(\n  AriaCalendarHeaderCell,\n  \"p-1 text-xs font-medium\",\n);\nexport const CalendarGridBody = styled(AriaCalendarGridBody, \"\");\nexport const CalendarCell = styled(\n  AriaCalendarCell,\n  \"m-0.5 flex size-8 cursor-default items-center justify-center rounded-md text-sm tabular-nums data-[selected]:bg-kumo-brand data-[selected]:text-folio-on-brand data-[outside-month]:text-kumo-placeholder data-[unavailable]:line-through outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/range-calendar.tsx",
+      "type": "registry:ui",
+      "target": "@ui/range-calendar.tsx",
+      "content": "\"use client\";\nimport {\n  RangeCalendar as AriaRangeCalendar,\n  CalendarGrid as AriaCalendarGrid,\n  CalendarGridHeader as AriaCalendarGridHeader,\n  CalendarHeaderCell as AriaCalendarHeaderCell,\n  CalendarGridBody as AriaCalendarGridBody,\n  CalendarCell as AriaCalendarCell,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport const RangeCalendar = styled(\n  AriaRangeCalendar,\n  \"flex flex-col gap-1.5 text-sm text-kumo-default\",\n);\nexport const CalendarGrid = styled(AriaCalendarGrid, \"border-collapse\");\nexport const CalendarGridHeader = styled(\n  AriaCalendarGridHeader,\n  \"text-kumo-subtle\",\n);\nexport const CalendarHeaderCell = styled(\n  AriaCalendarHeaderCell,\n  \"p-1 text-xs font-medium\",\n);\nexport const CalendarGridBody = styled(AriaCalendarGridBody, \"\");\nexport const CalendarCell = styled(\n  AriaCalendarCell,\n  \"m-0.5 flex size-8 cursor-default items-center justify-center rounded-md text-sm tabular-nums data-[selected]:bg-kumo-brand data-[selected]:text-folio-on-brand data-[outside-month]:text-kumo-placeholder data-[unavailable]:line-through outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-kumo-focus data-[disabled]:opacity-40\",\n);\n"
+    },
+    {
+      "path": "registry/ui/toast.tsx",
+      "type": "registry:ui",
+      "target": "@ui/toast.tsx",
+      "content": "\"use client\";\nimport {\n  UNSTABLE_Toast as AriaToast,\n  UNSTABLE_ToastRegion as AriaToastRegion,\n  UNSTABLE_ToastContent as AriaToastContent,\n} from \"react-aria-components\";\nimport { styled } from \"@/lib/folio-styled\";\nexport {\n  UNSTABLE_ToastQueue as ToastQueue,\n  UNSTABLE_ToastList as ToastList,\n} from \"react-aria-components\";\nexport const ToastRegion = styled(\n  AriaToastRegion,\n  \"fixed bottom-5 right-5 z-50 max-w-[calc(100vw-40px)] outline-none\",\n);\nexport const Toast = styled(\n  AriaToast,\n  \"mb-2 flex items-center justify-between gap-4 rounded-xl bg-kumo-base p-4 text-sm text-kumo-default shadow-folio-card outline-none\",\n);\nexport const ToastContent = styled(AriaToastContent, \"flex flex-col gap-1\");\n"
     }
   ],
   "cssVars": {

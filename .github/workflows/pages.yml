@@ -40,6 +40,8 @@ jobs:
           export FOLIO_TEST_URL=http://127.0.0.1:4173/Folio
           node tests/smoke.mjs
           node tests/motion.mjs
+          node tests/components.mjs
+          node tests/components-layout.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

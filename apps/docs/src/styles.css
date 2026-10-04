@@ -1672,3 +1672,222 @@ input::placeholder {
     gap: 10px;
   }
 }
+
+/* Component reference: scrollable navigation and independent deep-linked pages. */
+.sidebar > nav {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-bottom: 24px;
+}
+.component-navigation {
+  border-top: 1px solid var(--color-kumo-hairline);
+  padding-top: 20px;
+  margin-top: 12px;
+}
+.component-navigation .nav-item {
+  font-size: 12px;
+  min-height: 32px;
+  padding-block: 6px;
+}
+.sidebar-bottom {
+  flex-shrink: 0;
+}
+.catalog-toolbar {
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.filters {
+  flex-wrap: wrap;
+}
+.catalog-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-color-kumo-subtle);
+  font-size: 12px;
+}
+.component-caption {
+  width: 100%;
+}
+.component-caption p {
+  max-width: 28ch;
+}
+.component-doc {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+.doc-back,
+.doc-links,
+.doc-links a,
+.doc-pagination a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.doc-back {
+  color: var(--text-color-kumo-subtle);
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+.doc-eyebrow {
+  font-size: 12px;
+  color: var(--text-color-kumo-subtle);
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.doc-alpha {
+  border: 1px solid var(--color-kumo-line);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.component-doc h1 {
+  font-size: 38px;
+  letter-spacing: -1.3px;
+  line-height: 1.2;
+  outline: none;
+}
+.doc-description {
+  font-size: 16px;
+  margin-top: 16px;
+  max-width: 65ch;
+}
+.doc-links {
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 12px;
+  margin-top: 22px;
+}
+.doc-links a:hover,
+.doc-section a {
+  color: var(--text-color-kumo-link);
+}
+.doc-section {
+  margin-top: 36px;
+  min-width: 0;
+}
+.doc-section h2 {
+  font-size: 19px;
+  letter-spacing: -0.3px;
+  margin-bottom: 14px;
+}
+.doc-section > p {
+  font-size: 13px;
+  margin: 12px 0;
+}
+.doc-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 48px 28px;
+  border: 1px solid var(--color-kumo-hairline);
+  border-radius: 14px;
+  background: var(--color-kumo-base);
+  box-shadow: var(--shadow-folio-card);
+}
+.doc-example {
+  max-width: 100%;
+  min-width: 0;
+}
+.doc-example > :is([data-rac], div) {
+  max-width: 100%;
+}
+.doc-example :is(input, textarea) {
+  max-width: 100%;
+}
+.doc-example :is([role="listbox"], [role="tree"], [role="grid"]) {
+  min-width: 220px;
+}
+.doc-code {
+  position: relative;
+  border: 1px solid var(--color-kumo-hairline);
+  border-radius: 10px;
+  background: var(--color-kumo-recessed);
+  margin: 12px 0;
+}
+.doc-code > button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+.doc-code pre {
+  padding: 24px 55px 24px 20px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+  max-height: 560px;
+  tab-size: 2;
+}
+.doc-table-scroll {
+  overflow-x: auto;
+}
+.doc-props {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+.doc-props th,
+.doc-props td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--color-kumo-hairline);
+  vertical-align: top;
+}
+.doc-props th {
+  color: var(--text-color-kumo-subtle);
+  font-weight: 500;
+}
+.doc-props td:first-child {
+  min-width: 160px;
+}
+.doc-props code {
+  font-size: 11px;
+}
+.doc-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--color-kumo-hairline);
+  margin-top: 40px;
+  padding-top: 24px;
+  font-size: 13px;
+}
+.doc-note {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid var(--color-kumo-line);
+  border-radius: 8px;
+  background: var(--color-kumo-tint);
+  font-size: 13px;
+}
+@media (max-width: 700px) {
+  .component-doc {
+    padding-top: 24px;
+  }
+  .component-doc h1 {
+    font-size: 30px;
+  }
+  .doc-preview {
+    padding: 30px 16px;
+  }
+  .doc-example {
+    width: 100%;
+  }
+  .doc-preview[data-component="date-range-picker"] .doc-example > div > div {
+    flex-wrap: wrap;
+  }
+  .doc-links {
+    gap: 12px;
+  }
+  .sidebar-bottom .pro-card {
+    display: none;
+  }
+}

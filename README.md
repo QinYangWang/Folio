@@ -6,12 +6,12 @@ React Aria + Tailwind CSS v4 + Motion. Source-distributed components with Kumo s
 
 ```text
 apps/docs/                 Vite documentation and preview application
-  src/pages/               Handbook and commercial block preview pages
+  src/pages/               Component reference, handbook and block preview pages
   src/examples/            Examples importing the real registry components
-  src/lib/                 Documentation snippets
+  src/lib/                 Component catalog and routing utilities
   public/r/                Generated installable registry items
 registry/
-  ui/                      12 independently installable components
+  ui/                      62 independently installable components
   lib/                     Shared class merging and motion presets
   styles/                  Color/surface definitions and generated Tailwind theme
 registry.json              Source manifest: component files and npm dependencies
@@ -31,6 +31,12 @@ npm run build
 
 Vite serves `apps/docs`; production output is `dist`. Dev/build regenerate the registry and theme. Run `npm run registry:build` after changing registry source during development to refresh downloadable JSON.
 
+## Component reference
+
+The catalog covers all 54 component families in the [React Aria component sidebar](https://react-aria.adobe.com/Button), plus Dialog, Input, TextArea, Label and Folio’s Alert, Avatar, Badge and Card. There are 62 individual pages and installable items. Compound parts live beside their parent in the same source file. Toast explicitly exposes the upstream unstable API and is marked alpha.
+
+Each page includes a working preview, its source, standalone and composed-example installation commands, key props, accessibility notes and upstream API links. Hash routes such as `#/components/date-picker` support refresh and browser history on GitHub Pages without server rewrites. The source shown on a page is imported from the same example file used by its preview.
+
 ## Install components
 
 In a React project with Tailwind v4 and a configured shadcn `components.json`:
@@ -41,7 +47,7 @@ npx shadcn@latest add http://localhost:5173/r/text-field.json
 npx shadcn@latest add http://localhost:5173/r/dialog.json
 ```
 
-Use the actual dev-server port, or your deployed docs URL. Individual URLs also exist for checkbox, switch, badge, card, tabs, select, avatar, alert, and tooltip. `/r/folio.json` installs all components; `/r/theme.json` installs only the theme. No named namespace is claimed.
+Use the actual dev-server port, or your deployed docs URL. Every catalog entry has an independent registry URL, including dates, colors, collections, overlays and form primitives. React Aria Components 1.21.1 or later is required. `/r/folio.json` installs all components; `/r/theme.json` installs only the theme. No named namespace is claimed.
 
 Each component item contains one UI source file, only the shared helpers it needs, its npm dependencies and the shared theme CSS. This avoids hardcoded registry dependency URLs and works when the site hostname changes. Shared helper targets are deduplicated by the CLI. Configure the homepage in `registry.json` before publishing.
 
@@ -65,7 +71,7 @@ Set `data-mode="light"` or `data-mode="dark"` on `<html>` so portals inherit the
 
 1. Add its implementation in `registry/ui`, using semantic Tailwind tokens rather than docs CSS.
 2. Declare its files, shared helpers and npm dependencies in `registry.json`.
-3. Add a real usage example in `apps/docs/src/examples` and a snippet in `src/lib/snippets.ts`.
+3. Add an entry to `apps/docs/src/lib/catalog.ts` and a real example in `apps/docs/src/examples/components/<slug>.tsx`. The documentation page loads the example lazily and displays its actual source; there is no separate snippet to maintain.
 4. Run `npm run build` and `npm run test:registry`.
 
 ## Verification

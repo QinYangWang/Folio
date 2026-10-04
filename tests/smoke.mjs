@@ -12,9 +12,9 @@ await page.goto(`${baseURL.replace(/\/$/, "")}/`);
 await page
   .getByRole("heading", { name: "Small details. Better interfaces." })
   .waitFor();
-assert.equal(await page.locator(".component-card").count(), 12);
-await page.getByRole("button", { name: "Inputs", exact: true }).click();
-assert.equal(await page.locator(".component-card").count(), 5);
+assert.equal(await page.locator(".component-card").count(), 62);
+await page.getByRole("button", { name: "Forms", exact: true }).click();
+assert.equal(await page.locator(".component-card").count(), 14);
 await page.getByRole("button", { name: "All components", exact: true }).click();
 await page.getByRole("textbox", { name: "Search components" }).fill("switch");
 assert.equal(await page.locator(".component-card").count(), 1);
@@ -41,13 +41,15 @@ await page
   .getByRole("button", { name: "Create project", exact: true })
   .click();
 await page.locator(".toast").waitFor();
-await page.locator(".component-caption").first().click();
-await page
-  .getByRole("dialog")
-  .getByRole("heading", { name: "Button", exact: true })
-  .waitFor();
-await expect(page.getByRole("dialog").locator("pre").first()).toContainText(`${baseURL.replace(/\/$/, "")}/r/button.json`);
-await page.keyboard.press("Escape");
+await page.locator('a.component-caption[href="#/components/button"]').click();
+await expect(
+  page.getByRole("heading", { name: "Button", exact: true }),
+).toBeVisible();
+await expect(page.locator(".doc-code").first()).toContainText(
+  `${baseURL.replace(/\/$/, "")}/r/button.json`,
+);
+await page.goBack();
+await expect(page.locator(".component-card")).toHaveCount(62);
 const lightBackground = await page
   .locator(".component-card")
   .first()
@@ -65,7 +67,7 @@ assert.equal(
   await page.locator(".app").evaluate((el) => getComputedStyle(el).filter),
   "none",
 );
-await page.locator(".component-caption").first().click();
+await page.getByRole("button", { name: "Create project", exact: true }).click();
 assert.equal(
   await page
     .locator(".modal")
@@ -81,12 +83,12 @@ await page.waitForFunction(
 );
 await page.screenshot({ path: "/tmp/folio-preview.png", fullPage: true });
 await page
-  .locator("nav")
+  .locator(".sidebar nav")
   .getByRole("button", { name: "Theming", exact: true })
   .click();
 assert.equal(await page.locator(".token-chip").count(), 54);
 await page
-  .locator("nav")
+  .locator(".sidebar nav")
   .getByRole("button", { name: "Components", exact: false })
   .click();
 await page.setViewportSize({ width: 390, height: 844 });
@@ -95,7 +97,10 @@ assert.equal(
   true,
 );
 await page.getByRole("button", { name: "Open navigation" }).click();
-await page.locator("nav").getByRole("button", { name: "Blocks" }).click();
+await page
+  .locator(".sidebar nav")
+  .getByRole("button", { name: "Blocks" })
+  .click();
 await page.getByRole("heading", { name: "A running start." }).waitFor();
 await page.screenshot({ path: "/tmp/folio-mobile.png", fullPage: true });
 const registry = await (

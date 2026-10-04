@@ -3,7 +3,33 @@ import { readFile, mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 const manifest = JSON.parse(await readFile("registry.json", "utf8"));
-assert.equal(manifest.items.length, 12);
+assert.equal(manifest.items.length, 62);
+assert.equal(
+  new Set(manifest.items.map((item) => item.name)).size,
+  manifest.items.length,
+);
+const basicComponents =
+  "Autocomplete Breadcrumbs Button Calendar Checkbox CheckboxGroup ColorArea ColorField ColorPicker ColorSlider ColorSwatch ColorSwatchPicker ColorWheel ComboBox DateField DatePicker DateRangePicker Disclosure DisclosureGroup DropZone FileTrigger Form GridList Group Link ListBox Menu Meter Modal NavigationTree NumberField Popover PreviewTrigger ProgressBar RadioGroup RangeCalendar SearchField Select Separator Slider Switch Table Tabs TagGroup TextField TimeField Toast ToggleButton ToggleButtonGroup TokenField Toolbar Tooltip Tree Virtualizer".split(
+    " ",
+  );
+for (const name of basicComponents) {
+  const slug = name.replace(
+    /[A-Z]/g,
+    (letter, index) => (index ? "-" : "") + letter.toLowerCase(),
+  );
+  assert.ok(
+    manifest.items.some((item) => item.name === slug),
+    `${name} missing from registry`,
+  );
+}
+const catalog = await readFile("apps/docs/src/lib/catalog.ts", "utf8");
+for (const item of manifest.items) {
+  assert.ok(
+    new RegExp(`(?:"slug"|slug):\\s*"${item.name}"`).test(catalog),
+    `${item.name} missing from documentation`,
+  );
+  await readFile(`apps/docs/src/examples/components/${item.name}.tsx`, "utf8");
+}
 for (const entry of manifest.items) {
   const item = JSON.parse(
     await readFile(`apps/docs/public/r/${entry.name}.json`, "utf8"),
@@ -33,7 +59,9 @@ for (const entry of manifest.items) {
           ? spec.split("/").slice(0, 2).join("/")
           : spec.split("/")[0];
         assert.ok(
-          item.dependencies.includes(pkg),
+          item.dependencies.some(
+            (dep) => dep === pkg || dep.startsWith(pkg + "@"),
+          ),
           `${entry.name} missing package ${pkg}`,
         );
       }
@@ -78,5 +106,5 @@ for (const entry of manifest.items) {
   }
 }
 console.log(
-  "PASS: all 12 standalone registry payloads compile with only their declared source files and dependencies",
+  "PASS: all 62 standalone registry payloads compile with only their declared source files and dependencies",
 );

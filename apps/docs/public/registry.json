@@ -9,7 +9,7 @@
       "title": "Button",
       "description": "Folio button: semantic colors and tactile surfaces.",
       "dependencies": [
-        "react-aria-components",
+        "react-aria-components@^1.21.1",
         "motion",
         "clsx",
         "tailwind-merge"
@@ -38,7 +38,7 @@
       "title": "Text Field",
       "description": "Folio text-field: semantic colors and tactile surfaces.",
       "dependencies": [
-        "react-aria-components",
+        "react-aria-components@^1.21.1",
         "motion"
       ],
       "files": [
@@ -55,7 +55,7 @@
       "title": "Checkbox",
       "description": "Folio checkbox: semantic colors and tactile surfaces.",
       "dependencies": [
-        "react-aria-components",
+        "react-aria-components@^1.21.1",
         "motion"
       ],
       "files": [
@@ -72,7 +72,7 @@
       "title": "Switch",
       "description": "Folio switch: semantic colors and tactile surfaces.",
       "dependencies": [
-        "react-aria-components",
+        "react-aria-components@^1.21.1",
         "motion"
       ],
       "files": [
@@ -138,7 +138,7 @@
       "title": "Tabs",
       "description": "Folio tabs: semantic colors and tactile surfaces.",
       "dependencies": [
-        "react-aria-components",
+        "react-aria-components@^1.21.1",
         "motion",
         "clsx",
         "tailwind-merge"
@@ -162,7 +162,7 @@
       "title": "Dialog",
       "description": "Folio dialog: semantic colors and tactile surfaces.",
       "dependencies": [
-        "react-aria-components",
+        "react-aria-components@^1.21.1",
         "motion"
       ],
       "files": [
@@ -179,7 +179,7 @@
       "title": "Select",
       "description": "Folio select: semantic colors and tactile surfaces.",
       "dependencies": [
-        "react-aria-components",
+        "react-aria-components@^1.21.1",
         "lucide-react"
       ],
       "files": [
@@ -240,7 +240,7 @@
       "title": "Tooltip",
       "description": "Folio tooltip: semantic colors and tactile surfaces.",
       "dependencies": [
-        "react-aria-components",
+        "react-aria-components@^1.21.1",
         "motion"
       ],
       "files": [
@@ -248,6 +248,1358 @@
           "path": "registry/ui/tooltip.tsx",
           "type": "registry:ui",
           "target": "@ui/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "type": "registry:ui",
+      "title": "Autocomplete",
+      "description": "Folio autocomplete built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/autocomplete.tsx",
+          "type": "registry:ui",
+          "target": "@ui/autocomplete.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "title": "Breadcrumbs",
+      "description": "Folio breadcrumbs built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/breadcrumbs.tsx",
+          "type": "registry:ui",
+          "target": "@ui/breadcrumbs.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Checkbox Group",
+      "description": "Folio checkbox-group built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/checkbox-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/checkbox-group.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "color-area",
+      "type": "registry:ui",
+      "title": "Color Area",
+      "description": "Folio color-area built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/color-area.tsx",
+          "type": "registry:ui",
+          "target": "@ui/color-area.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "color-field",
+      "type": "registry:ui",
+      "title": "Color Field",
+      "description": "Folio color-field built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/color-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/color-field.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "Folio color-picker built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/color-picker.tsx",
+          "type": "registry:ui",
+          "target": "@ui/color-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-slider",
+      "type": "registry:ui",
+      "title": "Color Slider",
+      "description": "Folio color-slider built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/color-slider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/color-slider.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "color-swatch",
+      "type": "registry:ui",
+      "title": "Color Swatch",
+      "description": "Folio color-swatch built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/color-swatch.tsx",
+          "type": "registry:ui",
+          "target": "@ui/color-swatch.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "color-swatch-picker",
+      "type": "registry:ui",
+      "title": "Color Swatch Picker",
+      "description": "Folio color-swatch-picker built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/color-swatch-picker.tsx",
+          "type": "registry:ui",
+          "target": "@ui/color-swatch-picker.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "color-wheel",
+      "type": "registry:ui",
+      "title": "Color Wheel",
+      "description": "Folio color-wheel built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/color-wheel.tsx",
+          "type": "registry:ui",
+          "target": "@ui/color-wheel.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "combo-box",
+      "type": "registry:ui",
+      "title": "Combo Box",
+      "description": "Folio combo-box built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/combo-box.tsx",
+          "type": "registry:ui",
+          "target": "@ui/combo-box.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "date-field",
+      "type": "registry:ui",
+      "title": "Date Field",
+      "description": "Folio date-field built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/date-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/date-field.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Folio date-picker built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/date-picker.tsx",
+          "type": "registry:ui",
+          "target": "@ui/date-picker.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Date Range Picker",
+      "description": "Folio date-range-picker built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/date-range-picker.tsx",
+          "type": "registry:ui",
+          "target": "@ui/date-range-picker.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "disclosure",
+      "type": "registry:ui",
+      "title": "Disclosure",
+      "description": "Folio disclosure built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/disclosure.tsx",
+          "type": "registry:ui",
+          "target": "@ui/disclosure.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "disclosure-group",
+      "type": "registry:ui",
+      "title": "Disclosure Group",
+      "description": "Folio disclosure-group built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/disclosure-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/disclosure-group.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "drop-zone",
+      "type": "registry:ui",
+      "title": "Drop Zone",
+      "description": "Folio drop-zone built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/drop-zone.tsx",
+          "type": "registry:ui",
+          "target": "@ui/drop-zone.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "file-trigger",
+      "type": "registry:ui",
+      "title": "File Trigger",
+      "description": "Folio file-trigger built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/file-trigger.tsx",
+          "type": "registry:ui",
+          "target": "@ui/file-trigger.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "Folio form built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/form.tsx",
+          "type": "registry:ui",
+          "target": "@ui/form.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "grid-list",
+      "type": "registry:ui",
+      "title": "Grid List",
+      "description": "Folio grid-list built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/grid-list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/grid-list.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "group",
+      "type": "registry:ui",
+      "title": "Group",
+      "description": "Folio group built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/group.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "type": "registry:ui",
+      "title": "Link",
+      "description": "Folio link built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/link.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "list-box",
+      "type": "registry:ui",
+      "title": "List Box",
+      "description": "Folio list-box built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/list-box.tsx",
+          "type": "registry:ui",
+          "target": "@ui/list-box.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "Menu",
+      "description": "Folio menu built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/menu.tsx",
+          "type": "registry:ui",
+          "target": "@ui/menu.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "Folio meter built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/meter.tsx",
+          "type": "registry:ui",
+          "target": "@ui/meter.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "modal",
+      "type": "registry:ui",
+      "title": "Modal",
+      "description": "Folio modal built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/modal.tsx",
+          "type": "registry:ui",
+          "target": "@ui/modal.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "navigation-tree",
+      "type": "registry:ui",
+      "title": "Navigation Tree",
+      "description": "Folio navigation-tree built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/navigation-tree.tsx",
+          "type": "registry:ui",
+          "target": "@ui/navigation-tree.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "Folio number-field built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/number-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/number-field.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Folio popover built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/popover.tsx",
+          "type": "registry:ui",
+          "target": "@ui/popover.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "preview-trigger",
+      "type": "registry:ui",
+      "title": "Preview Trigger",
+      "description": "Folio preview-trigger built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/preview-trigger.tsx",
+          "type": "registry:ui",
+          "target": "@ui/preview-trigger.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "title": "Progress Bar",
+      "description": "Folio progress-bar built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/progress-bar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/progress-bar.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Folio radio-group built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/radio-group.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "search-field",
+      "type": "registry:ui",
+      "title": "Search Field",
+      "description": "Folio search-field built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/search-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/search-field.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Folio separator built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/separator.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Folio slider built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/slider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/slider.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Folio table built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "@ui/table.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "tag-group",
+      "type": "registry:ui",
+      "title": "Tag Group",
+      "description": "Folio tag-group built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tag-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/tag-group.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "time-field",
+      "type": "registry:ui",
+      "title": "Time Field",
+      "description": "Folio time-field built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/time-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/time-field.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "toggle-button",
+      "type": "registry:ui",
+      "title": "Toggle Button",
+      "description": "Folio toggle-button built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toggle-button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toggle-button.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "toggle-button-group",
+      "type": "registry:ui",
+      "title": "Toggle Button Group",
+      "description": "Folio toggle-button-group built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toggle-button-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toggle-button-group.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "token-field",
+      "type": "registry:ui",
+      "title": "Token Field",
+      "description": "Folio token-field built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/token-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/token-field.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "description": "Folio toolbar built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toolbar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toolbar.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "tree",
+      "type": "registry:ui",
+      "title": "Tree",
+      "description": "Folio tree built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tree.tsx",
+          "type": "registry:ui",
+          "target": "@ui/tree.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "virtualizer",
+      "type": "registry:ui",
+      "title": "Virtualizer",
+      "description": "Folio virtualizer built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/virtualizer.tsx",
+          "type": "registry:ui",
+          "target": "@ui/virtualizer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Folio input built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/input.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "text-area",
+      "type": "registry:ui",
+      "title": "Text Area",
+      "description": "Folio text-area built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/text-area.tsx",
+          "type": "registry:ui",
+          "target": "@ui/text-area.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Folio label built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "@ui/label.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Folio calendar built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/calendar.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "range-calendar",
+      "type": "registry:ui",
+      "title": "Range Calendar",
+      "description": "Folio range-calendar built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/range-calendar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/range-calendar.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Folio toast built on React Aria with semantic styling.",
+      "dependencies": [
+        "react-aria-components@^1.21.1",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toast.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toast.tsx"
+        },
+        {
+          "path": "registry/lib/folio-styled.tsx",
+          "type": "registry:lib",
+          "target": "@lib/folio-styled.tsx"
+        },
+        {
+          "path": "registry/lib/folio-utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/folio-utils.ts"
         }
       ]
     }

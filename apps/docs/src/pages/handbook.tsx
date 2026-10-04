@@ -155,9 +155,9 @@ export function Handbook({
             0.1.0 <span className="badge orange">Initial release</span>
           </h2>
           <p>
-            12 interactive component previews, React Aria primitives, Tailwind
-            CSS styling, a shadcn-compatible registry, and the first look at
-            Folio Pro.
+            62 individual component pages, React Aria primitives, Tailwind CSS
+            styling, a shadcn-compatible registry, and the first look at Folio
+            Pro.
           </p>
         </>
       ) : page === "Roadmap" ? (
@@ -195,7 +195,7 @@ export function Handbook({
           <h2>Your code. Your decisions.</h2>
           <p>
             Install source code with the shadcn CLI, then adapt it to your
-            product. All 12 components are independently installable from the
+            product. All 62 components are independently installable from the
             registry.
           </p>
           <Button variant="primary" onPress={() => navigate("Installation")}>

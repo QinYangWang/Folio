@@ -78,3 +78,6 @@ export function AnimatedModal({
     </MotionModal>
   );
 }
+
+export { DialogTrigger } from "react-aria-components";
+export { Dialog, Heading } from "react-aria-components";
