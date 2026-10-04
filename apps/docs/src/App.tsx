@@ -145,7 +145,9 @@ function App() {
     document.documentElement.dataset.mode = dark ? "dark" : "light";
   }, [dark]);
   function navigate(p: string) {
-    window.location.hash = `/${p.toLowerCase().replaceAll(" ", "-")}`;
+    const next = p.toLowerCase().replaceAll(" ", "-");
+    window.location.hash = `/${next}`;
+    setRoute(next);
     setQuery("");
     setMobile(false);
   }

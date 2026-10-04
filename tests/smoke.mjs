@@ -86,7 +86,7 @@ await page
   .locator(".sidebar nav")
   .getByRole("button", { name: "Theming", exact: true })
   .click();
-assert.equal(await page.locator(".token-chip").count(), 54);
+await expect(page.locator(".token-chip")).toHaveCount(54);
 await page
   .locator(".sidebar nav")
   .getByRole("button", { name: "Components", exact: false })
