@@ -25,7 +25,7 @@ assert.equal(
   true,
 );
 await page.getByRole("button", { name: /Framework/ }).click();
-await page.getByRole("option", { name: "React", exact: true }).click();
+await page.getByRole("dialog", { name: "Framework", exact: true }).getByRole("option", { name: "React", exact: true }).click();
 await expect(page.getByRole("button", { name: /Framework/ })).toContainText(
   "React",
 );

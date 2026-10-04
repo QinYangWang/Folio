@@ -100,3 +100,7 @@ All `styled()` components (about 45) also lost the global 150ms `color/backgroun
 1. **Docs site typography** (`apps/docs/src/styles.css`): move 9–13px text to 14px except compact chrome, remove 5 `letter-spacing` overrides, and set inline `monospace` to `0.9em`. This is out of scope for the component registry but affects the reference site.
 2. **Disclosure animation**: animating the panel requires an inner wrapper with fixed width (rule 13).
 3. **Visual QA**: compare light and dark screenshots of Menu, ListBox, Toolbar, ColorArea and Alert against the previous release.
+
+## Catalog preview fix
+
+All 62 catalog entries now have working previews. The 50 newer examples mount near the viewport and retain their state after scrolling away. Catalog cards use flat frames so raised components are not nested inside another raised surface. `tests/catalog-previews.mjs` checks loading, interaction, state retention and mobile overflow, and runs in the Pages workflow.

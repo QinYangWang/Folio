@@ -4,6 +4,7 @@ import { BlocksPage } from "./pages/blocks";
 import { catalog, componentCategories } from "./lib/catalog";
 import { ComponentPage } from "./pages/component";
 import { Preview } from "./examples/component-preview";
+import { LazyPreview } from "./examples/lazy-preview";
 import {
   AnimatePresence,
   LayoutGroup,
@@ -432,15 +433,11 @@ function App() {
                             setPage={setPage}
                           />
                         ) : (
-                          <div className="catalog-placeholder">
-                            <Box size={25} />
-                            <span>
-                              {
-                                catalog.find((item) => item.name === name)
-                                  ?.category
-                              }
-                            </span>
-                          </div>
+                          <LazyPreview
+                            slug={
+                              catalog.find((item) => item.name === name)!.slug
+                            }
+                          />
                         )}
                       </div>
                       <a

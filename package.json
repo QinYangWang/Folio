@@ -8,7 +8,7 @@
     "build": "tsc -b && node scripts/registry.mjs && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "theme": "node scripts/theme.mjs",
-    "test": "node tests/design-rules.mjs && node scripts/registry.mjs && node tests/theme.mjs && node tests/registry.mjs && node tests/smoke.mjs && node tests/motion.mjs && node tests/components.mjs && node tests/components-layout.mjs",
+    "test": "node tests/design-rules.mjs && node scripts/registry.mjs && node tests/theme.mjs && node tests/registry.mjs && node tests/smoke.mjs && node tests/motion.mjs && node tests/components.mjs && node tests/components-layout.mjs && node tests/catalog-previews.mjs",
     "test:design": "node tests/design-rules.mjs",
     "registry:build": "node scripts/registry.mjs",
     "test:registry": "node scripts/registry.mjs && node tests/registry.mjs",
