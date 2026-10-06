@@ -95,7 +95,7 @@ strong {
   margin-left: -6px;
 }
 .brand small {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   border: 1px solid var(--color-kumo-hairline);
   padding: 3px 5px;
@@ -139,12 +139,13 @@ strong {
   border-radius: 6px;
   background: var(--color-kumo-base);
   color: var(--text-color-kumo-subtle);
-  font-size: 11px;
+  font-size: 14px;
   padding: 9px 8px;
   white-space: nowrap;
 }
 .search-trigger kbd {
-  font: 10px inherit;
+  font-size: 11px;
+  font-family: inherit;
   margin-left: auto;
   background: var(--color-kumo-elevated);
   padding: 1px 4px;
@@ -155,7 +156,7 @@ strong {
   margin-top: 28px;
 }
 .nav-group > p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-color-kumo-subtle);
   margin: 0 12px 10px;
 }
@@ -166,7 +167,7 @@ strong {
   width: 100%;
   padding: 9px 12px;
   color: var(--text-color-kumo-subtle);
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 6px;
   margin: 3px 0;
 }
@@ -176,19 +177,20 @@ strong {
   color: var(--text-color-kumo-subtle);
 }
 .nav-item.active {
-  background: var(--color-kumo-info-tint);
-  color: var(--color-kumo-brand);
+  background: var(--color-kumo-tint);
+  color: var(--text-color-kumo-strong);
+  font-weight: 500;
 }
 .nav-item.active svg {
-  color: var(--color-kumo-brand);
+  color: var(--text-color-kumo-default);
 }
 .nav-count {
   margin-left: auto;
-  font-size: 10px;
-  color: var(--color-kumo-brand);
+  font-size: 12px;
+  color: var(--text-color-kumo-subtle);
 }
 .tiny-pro {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--text-color-kumo-warning);
   padding: 1px 5px;
   border-radius: 4px;
@@ -227,13 +229,13 @@ strong {
   align-items: center;
 }
 .pro-card strong {
-  font-size: 10px;
+  font-size: 13px;
 }
 .pro-card svg {
   color: var(--text-color-kumo-subtle);
 }
 .pro-card p {
-  font-size: 10px;
+  font-size: 12px;
   margin: 7px 0 11px;
 }
 .pro-card button {
@@ -241,14 +243,14 @@ strong {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  font-size: 11px;
+  font-size: 13px;
 }
 .sidebar-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 21px 0;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--text-color-kumo-subtle);
 }
 .sidebar-footer > span {
@@ -272,7 +274,7 @@ strong {
   align-items: center;
   justify-content: space-between;
   padding: 0 43px;
-  font-size: 11px;
+  font-size: 13px;
 }
 .breadcrumb {
   display: flex;
@@ -321,7 +323,7 @@ strong {
   border-radius: 6px;
   padding: 10px 13px;
   background: var(--color-kumo-elevated);
-  font-size: 10px;
+  font-size: 13px;
   color: var(--text-color-kumo-subtle);
 }
 .release-dot {
@@ -350,8 +352,7 @@ strong {
   overflow: hidden;
 }
 .eyebrow {
-  font-size: 9px;
-  letter-spacing: 1.2px;
+  font-size: 12px;
   color: var(--text-color-kumo-subtle);
   display: flex;
   align-items: center;
@@ -368,15 +369,14 @@ h1 {
   font-size: 39px;
   line-height: 1.3;
   margin: 15px 0 15px;
-  letter-spacing: -1.4px;
-  font-weight: 550;
+  font-weight: 600;
 }
 .hero h1 span {
   color: var(--text-color-kumo-subtle);
 }
 .hero > p {
-  font-size: 12px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.8;
 }
 .hero-actions {
   display: flex;
@@ -395,7 +395,7 @@ h1 {
   gap: 12px;
   padding: 9px 12px;
   font-family: monospace !important;
-  font-size: 10px !important;
+  font-size: 13px !important;
   color: var(--text-color-kumo-subtle);
 }
 .install-command > span {
@@ -407,7 +407,7 @@ h1 {
   gap: 22px;
   margin-top: 25px;
   color: var(--text-color-kumo-subtle);
-  font-size: 9px;
+  font-size: 13px;
 }
 .hero-benefits > span {
   display: flex;
@@ -497,7 +497,7 @@ h1 {
   gap: 9px;
 }
 .section-heading h2 > span {
-  font-size: 10px;
+  font-size: 12px;
   background: var(--color-kumo-elevated);
   border: 1px solid var(--color-kumo-hairline);
   padding: 2px 5px;
@@ -506,14 +506,14 @@ h1 {
   font-weight: 400;
 }
 .section-heading p {
-  font-size: 11px;
+  font-size: 14px;
   margin-top: 5px;
 }
 .section-heading a {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 10px;
+  font-size: 13px;
   color: var(--text-color-kumo-subtle);
 }
 .catalog-toolbar {
@@ -528,7 +528,7 @@ h1 {
   gap: 4px;
 }
 .filters button {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-color-kumo-subtle);
   white-space: nowrap;
   padding: 7px 10px;
@@ -548,15 +548,16 @@ h1 {
   border: 1px solid var(--color-kumo-hairline);
   border-radius: 5px;
   width: 191px;
+  margin-left: auto;
 }
 .filter-search input {
   min-width: 0;
   width: 100%;
   outline: none;
-  font-size: 10px;
+  font-size: 14px;
 }
 .filter-search kbd {
-  font-size: 9px;
+  font-size: 11px;
   padding: 0 3px;
   background: var(--color-kumo-elevated);
   border: 1px solid var(--color-kumo-hairline);
@@ -590,11 +591,11 @@ h1 {
   border-top: 1px solid var(--color-kumo-hairline);
 }
 .component-caption strong {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
 }
 .component-caption p {
-  font-size: 10px;
+  font-size: 14px;
   margin-top: 4px;
   color: var(--text-color-kumo-subtle);
 }
@@ -620,7 +621,7 @@ h1 {
 }
 .input-preview .hint {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--text-color-kumo-subtle);
   margin-top: 7px;
 }
@@ -647,7 +648,7 @@ h1 {
   max-width: 220px;
 }
 .badge {
-  font-size: 10px;
+  font-size: 12px;
   border-radius: 5px;
   padding: 3px 8px;
   white-space: nowrap;
@@ -691,10 +692,10 @@ h1 {
 }
 .mini-card strong {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
 }
 .mini-card p {
-  font-size: 9px;
+  font-size: 12px;
   margin-top: 2px;
 }
 .mini-card button {
@@ -707,7 +708,7 @@ h1 {
   color: var(--text-color-kumo-subtle);
 }
 .new-label {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--text-color-kumo-subtle);
   background: var(--color-kumo-elevated);
   padding: 2px 5px;
@@ -716,7 +717,7 @@ h1 {
 }
 .demo-tabs {
   width: 100%;
-  font-size: 11px;
+  font-size: 14px;
 }
 .demo-tabs [role="tablist"] {
   display: flex;
@@ -733,7 +734,7 @@ h1 {
 }
 .demo-tabs [role="tabpanel"] {
   padding: 20px 5px;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-color-kumo-subtle);
 }
 .input-preview label {
@@ -746,7 +747,7 @@ h1 {
   width: 100%;
   border-radius: 5px;
   padding: 9px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--text-color-kumo-subtle);
 }
 .avatars {
@@ -773,10 +774,10 @@ h1 {
   border-radius: 6px;
 }
 .alert strong {
-  font-size: 11px;
+  font-size: 14px;
 }
 .alert p {
-  font-size: 9px;
+  font-size: 14px;
 }
 .bottom-banner {
   display: flex;
@@ -795,10 +796,10 @@ h1 {
   border-radius: 8px;
 }
 .bottom-banner h3 {
-  font-size: 13px;
+  font-size: 15px;
 }
 .bottom-banner p {
-  font-size: 10px;
+  font-size: 13px;
   margin-top: 4px;
 }
 .bottom-banner > button {
@@ -810,7 +811,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   color: var(--text-color-kumo-subtle);
-  font-size: 9px;
+  font-size: 12px;
   padding: 23px 0;
 }
 .workspace > main > footer > span {
@@ -848,7 +849,7 @@ h1 {
   border: 1px solid var(--color-kumo-hairline);
   border-radius: 7px;
   padding: 18px;
-  font-size: 12px;
+  font-size: 13px;
   overflow: auto;
   margin: 18px 0;
   color: var(--text-color-kumo-subtle);
@@ -877,7 +878,7 @@ h1 {
 }
 .swatches > div {
   font-family: monospace;
-  font-size: 11px;
+  font-size: 12px;
 }
 .swatches span {
   display: block;
@@ -925,7 +926,7 @@ h1 {
   font-size: 15px;
 }
 .block-card p {
-  font-size: 11px;
+  font-size: 13px;
   min-height: 48px;
   margin: 7px 0 15px;
 }
@@ -994,12 +995,12 @@ h1 {
 .mock-main button {
   background: var(--color-kumo-brand);
   color: var(--color-folio-on-brand);
-  font-size: 8px;
+  font-size: 11px;
   padding: 6px 9px;
   border-radius: 3px;
 }
 .muted {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-color-kumo-subtle);
   margin-top: 18px;
 }
@@ -1048,11 +1049,11 @@ h1 {
   margin-bottom: 25px;
 }
 .modal h3 {
-  font-size: 13px;
+  font-size: 14px;
 }
 .modal p {
   margin-bottom: 15px;
-  font-size: 13px;
+  font-size: 14px;
 }
 .pro-features {
   margin: 25px 0;
@@ -1069,7 +1070,7 @@ h1 {
   padding: 15px;
   background: var(--color-kumo-warning-tint);
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-color-kumo-warning);
   margin-bottom: 22px;
 }
@@ -1129,7 +1130,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 14px;
   box-shadow: 0 5px 30px var(--color-kumo-shadow-drop);
 }
 .empty {
@@ -1196,9 +1197,6 @@ h1 {
   .component-caption {
     padding: 14px 12px;
   }
-  .component-caption p {
-    font-size: 9px;
-  }
   .hero-benefits {
     gap: 14px;
   }
@@ -1220,10 +1218,10 @@ h1 {
     flex-wrap: wrap;
   }
   .announcement {
-    font-size: 9px;
+    font-size: 12px;
   }
   .announcement button {
-    font-size: 9px;
+    font-size: 12px;
   }
   .blocks-grid {
     grid-template-columns: 1fr;
@@ -1284,7 +1282,7 @@ h1 {
   }
   .hero-benefits {
     gap: 13px;
-    font-size: 9px;
+    font-size: 12px;
   }
   .catalog-toolbar {
     flex-wrap: wrap;
@@ -1320,10 +1318,10 @@ h1 {
     margin-left: 53px;
   }
   .bottom-banner h3 {
-    font-size: 11px;
+    font-size: 14px;
   }
   .bottom-banner p {
-    font-size: 9px;
+    font-size: 12px;
   }
   .banner-icon {
     padding: 7px;
@@ -1331,7 +1329,7 @@ h1 {
   .workspace > main > footer {
     gap: 10px;
     flex-wrap: wrap;
-    font-size: 8px;
+    font-size: 11px;
   }
   .swatches {
     gap: 8px;
@@ -1343,8 +1341,7 @@ h1 {
     padding: 20px;
   }
   .eyebrow {
-    font-size: 8px;
-    letter-spacing: 0.8px;
+    font-size: 11px;
   }
 }
 @media (max-width: 390px) {
@@ -1358,7 +1355,7 @@ h1 {
     max-width: none;
   }
   .filters button {
-    font-size: 9px;
+    font-size: 13px;
   }
   .header-actions a {
     display: none;
@@ -1386,7 +1383,6 @@ input::placeholder {
   color: var(--text-color-kumo-placeholder);
 }
 
-.nav-item.active,
 .demo-tabs [role="tab"][data-selected] {
   color: var(--text-color-kumo-link);
 }
@@ -1420,7 +1416,7 @@ input::placeholder {
   gap: 18px;
   padding: 14px;
   border-bottom: 1px solid var(--color-kumo-hairline);
-  font-size: 11px;
+  font-size: 13px;
 }
 .token-row:last-child {
   border: 0;
@@ -1634,7 +1630,7 @@ input::placeholder {
   line-height: 20px;
 }
 .mini-card p {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 18px;
 }
 .mini-card button svg {
@@ -1688,7 +1684,7 @@ input::placeholder {
   margin-top: 12px;
 }
 .component-navigation .nav-item {
-  font-size: 12px;
+  font-size: 14px;
   min-height: 32px;
   padding-block: 6px;
 }
@@ -1708,7 +1704,7 @@ input::placeholder {
   align-items: center;
   gap: 12px;
   color: var(--text-color-kumo-subtle);
-  font-size: 12px;
+  font-size: 14px;
 }
 .component-caption {
   width: 100%;
@@ -1731,11 +1727,11 @@ input::placeholder {
 }
 .doc-back {
   color: var(--text-color-kumo-subtle);
-  font-size: 12px;
+  font-size: 13px;
   margin-bottom: 30px;
 }
 .doc-eyebrow {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-color-kumo-subtle);
   margin-bottom: 10px;
   display: flex;
@@ -1749,7 +1745,6 @@ input::placeholder {
 }
 .component-doc h1 {
   font-size: 38px;
-  letter-spacing: -1.3px;
   line-height: 1.2;
   outline: none;
 }
@@ -1761,7 +1756,7 @@ input::placeholder {
 .doc-links {
   flex-wrap: wrap;
   gap: 20px;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 22px;
 }
 .doc-links a:hover,
@@ -1774,11 +1769,10 @@ input::placeholder {
 }
 .doc-section h2 {
   font-size: 19px;
-  letter-spacing: -0.3px;
   margin-bottom: 14px;
 }
 .doc-section > p {
-  font-size: 13px;
+  font-size: 14px;
   margin: 12px 0;
 }
 .doc-preview {
@@ -1820,7 +1814,7 @@ input::placeholder {
 .doc-code pre {
   padding: 24px 55px 24px 20px;
   overflow: auto;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.8;
   margin: 0;
   max-height: 560px;
@@ -1832,7 +1826,7 @@ input::placeholder {
 .doc-props {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: 13px;
   text-align: left;
 }
 .doc-props th,
@@ -1849,7 +1843,7 @@ input::placeholder {
   min-width: 160px;
 }
 .doc-props code {
-  font-size: 11px;
+  font-size: 12px;
 }
 .doc-pagination {
   display: flex;
@@ -1858,7 +1852,7 @@ input::placeholder {
   border-top: 1px solid var(--color-kumo-hairline);
   margin-top: 40px;
   padding-top: 24px;
-  font-size: 13px;
+  font-size: 14px;
 }
 .doc-note {
   margin-top: 24px;
@@ -1866,7 +1860,7 @@ input::placeholder {
   border: 1px solid var(--color-kumo-line);
   border-radius: 8px;
   background: var(--color-kumo-tint);
-  font-size: 13px;
+  font-size: 14px;
 }
 @media (max-width: 700px) {
   .component-doc {
@@ -2001,6 +1995,14 @@ input::placeholder {
   line-height: 24px;
   margin: 0;
   letter-spacing: normal;
+}
+
+/* Inline monospace runs slightly smaller than surrounding text. */
+code {
+  font-size: 0.9em;
+}
+pre code {
+  font-size: inherit;
 }
 @media (max-width: 700px) {
   .component-grid {

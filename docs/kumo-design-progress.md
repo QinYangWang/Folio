@@ -10,9 +10,9 @@ Legend: ✅ done · 🟡 partially done / needs follow-up · ⬜ not started · 
 
 | # | Rule | Check | Components | Docs site |
 | --- | --- | --- | --- | --- |
-| 1 | `content-text-size` 14px content text | auto | ✅ | ⬜ `styles.css` uses 9–13px in ~60 places |
-| 2 | `heading-case` sentence case | auto (`uppercase`/`capitalize`) | ✅ | ✅ |
-| 3 | `font-tracking` no `tracking-*` | auto | ✅ | ⬜ 5 `letter-spacing` overrides in `styles.css` |
+| 1 | `content-text-size` 14px content text | auto | ✅ | ✅ `styles.css` body text moved to 13–14px; only badge-like annotations stay at 11–12px |
+| 2 | `heading-case` sentence case | auto (`uppercase`/`capitalize`) | ✅ | ✅ hero eyebrow is sentence case |
+| 3 | `font-tracking` no `tracking-*` | auto | ✅ | ✅ all `letter-spacing` overrides removed from `styles.css` |
 | 4 | `font-weight` no `font-bold` | auto | ✅ | ✅ |
 | 5 | `related-text-spacing` | manual | ✅ Alert, Card/Dialog/Modal/Popover examples | ⬜ |
 | 6 | `text-spacing` optical padding | auto (`shadow-folio-card` surfaces) | ✅ | ⬜ |
@@ -20,7 +20,7 @@ Legend: ✅ done · 🟡 partially done / needs follow-up · ⬜ not started · 
 | 8 | `shadow-borders` | auto | ✅ | ✅ `.doc-preview` border + card shadow removed (inset-shadow inputs are allowed) |
 | 9 | `concentric-border-radius` | auto (same-file containers/items) | ✅ | ⬜ |
 | 10 | `icon-alignment` (`h-lh`) | manual | ✅ Alert, Checkbox, Switch, Radio | — |
-| 11 | `inline-monospace-size` | auto (examples) | — | ⬜ code spans in `styles.css` |
+| 11 | `inline-monospace-size` | auto (examples) | — | ✅ global `code { font-size: 0.9em }` (`pre code` inherits) |
 | 12 | `sticky-borders` | auto | — (no sticky components) | ✅ |
 | 13 | `collapse-content-size` | manual | — (Disclosure has no collapse animation yet) | — |
 | 14 | `layer-card-nesting` | manual | ✅ no nested `shadow-folio-card` surfaces | ✅ preview frame is now flat, so Card/Menu examples are no longer card-in-card |
@@ -97,7 +97,7 @@ All `styled()` components (about 45) also lost the global 150ms `color/backgroun
 
 ## Open items
 
-1. **Docs site typography** (`apps/docs/src/styles.css`): move 9–13px text to 14px except compact chrome, remove 5 `letter-spacing` overrides, and set inline `monospace` to `0.9em`. This is out of scope for the component registry but affects the reference site.
+1. ~~**Docs site typography**~~ Done: content text is 13–14px, tracking overrides removed, inline `code` is `0.9em`, and the sidebar active item uses the neutral `kumo-tint` fill (matching kumo-ui.com) instead of the blue `info-tint`.
 2. **Disclosure animation**: animating the panel requires an inner wrapper with fixed width (rule 13).
 3. **Visual QA**: compare light and dark screenshots of Menu, ListBox, Toolbar, ColorArea and Alert against the previous release.
 

@@ -184,7 +184,7 @@ function App() {
           <small>beta</small>
         </a>
         <button className="search-trigger" onClick={() => setSearchOpen(true)}>
-          <Search size={15} /> Search documentation <kbd>⌘ K</kbd>
+          <Search size={15} /> Search <kbd>⌘ K</kbd>
         </button>
         <nav>
           {groups.map((g) => (
@@ -307,7 +307,7 @@ function App() {
             <>
               <section className="hero">
                 <div className="eyebrow">
-                  <span /> THE BUILDING BLOCKS OF BETTER PRODUCTS
+                  <span /> The building blocks of better products
                 </div>
                 <h1>
                   Small details. <span>Better interfaces.</span>
