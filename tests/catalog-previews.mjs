@@ -22,6 +22,34 @@ try {
     await expect(preview.locator("[data-preview-ready]")).toBeVisible();
     await expect(preview.getByRole("alert")).toHaveCount(0);
   }
+  async function checkFrames() {
+    const issues = await page.locator(".component-card").evaluateAll((cards) =>
+      cards.flatMap((card) => {
+        const frame = card.querySelector(".component-preview");
+        const caption = card.querySelector(".component-caption");
+        const name = caption.querySelector("strong").textContent;
+        const content =
+          frame.querySelector("[data-preview-ready]") ||
+          Array.from(frame.children).find(
+            (el) => el.getBoundingClientRect().width > 0,
+          );
+        const f = frame.getBoundingClientRect(),
+          c = content.getBoundingClientRect();
+        return frame.scrollHeight > frame.clientHeight + 1 ||
+          frame.scrollWidth > frame.clientWidth + 1 ||
+          c.bottom > f.bottom - 8 ||
+          c.top < f.top + 8
+          ? [name]
+          : [];
+      }),
+    );
+    assert.deepEqual(
+      issues,
+      [],
+      "Preview content must fit without clipping or internal frame scrolling",
+    );
+  }
+  await checkFrames();
   const number = page.locator('[data-preview="number-field"]');
   await number.getByRole("button", { name: "Add member" }).click();
   await expect(number.getByRole("textbox")).toHaveValue("3");
@@ -35,6 +63,17 @@ try {
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
       "Catalog overflows mobile viewport",
+    );
+  }
+  await checkFrames();
+  for (const width of [320, 768, 1024]) {
+    await page.setViewportSize({ width, height: 900 });
+    await checkFrames();
+    assert.ok(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+      `Page overflows at ${width}px`,
     );
   }
   assert.deepEqual(errors, []);

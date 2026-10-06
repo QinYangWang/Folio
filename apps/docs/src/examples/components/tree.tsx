@@ -5,23 +5,31 @@ import { Button } from "@/ui/button";
 
 export default function Example() {
   return (
-    <Tree
-      aria-label="Project files"
-      selectionMode="single"
-      defaultExpandedKeys={["components"]}
-    >
-      <TreeItem id="components" textValue="Components">
-        <TreeItemContent>
-          <Button slot="chevron">›</Button>
-          Components
-        </TreeItemContent>
-        <TreeItem id="button" textValue="Button">
-          <TreeItemContent>Button</TreeItemContent>
+    <div className="w-64 max-w-full">
+      <Tree
+        aria-label="Project files"
+        selectionMode="single"
+        defaultExpandedKeys={["components"]}
+      >
+        <TreeItem id="components" textValue="Components">
+          <TreeItemContent>
+            <Button
+              slot="chevron"
+              variant="ghost"
+              className="size-6 min-h-6 p-0"
+            >
+              ›
+            </Button>
+            Components
+          </TreeItemContent>
+          <TreeItem id="button" textValue="Button">
+            <TreeItemContent>Button</TreeItemContent>
+          </TreeItem>
+          <TreeItem id="input" textValue="Input">
+            <TreeItemContent>Input</TreeItemContent>
+          </TreeItem>
         </TreeItem>
-        <TreeItem id="input" textValue="Input">
-          <TreeItemContent>Input</TreeItemContent>
-        </TreeItem>
-      </TreeItem>
-    </Tree>
+      </Tree>
+    </div>
   );
 }

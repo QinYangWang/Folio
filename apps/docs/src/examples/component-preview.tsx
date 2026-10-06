@@ -1,5 +1,5 @@
 import { Badge } from "@/ui/badge";
-import { Card } from "@/ui/card";
+import CardExample from "./components/card";
 import { Avatar } from "@/ui/avatar";
 import { Alert } from "@/ui/alert";
 import { Select } from "@/ui/select";
@@ -11,7 +11,6 @@ import { TextField as Field } from "@/ui/text-field";
 import {
   ArrowRight,
   Plus,
-  Layers,
   ExternalLink,
   Check,
   CircleHelp,
@@ -97,18 +96,7 @@ export function Preview({
         </div>
       );
     case "Card":
-      return (
-        <Card className="mini-card">
-          <div className="mini-icon">
-            <Layers size={17} />
-          </div>
-          <strong>Your next great idea</strong>
-          <p>Start with a thoughtful foundation.</p>
-          <button onClick={() => setDialog(true)}>
-            Create a project <ArrowRight size={13} />
-          </button>
-        </Card>
-      );
+      return <CardExample />;
     case "Tabs":
       return <DemoTabs />;
     case "Dialog":

@@ -9,7 +9,7 @@ import { Label } from "@/ui/label";
 export default function Example() {
   return (
     <ColorPicker defaultValue="#2563eb">
-      <div className="flex flex-col gap-4">
+      <div className="flex w-48 flex-col gap-4">
         <ColorArea
           aria-label="Brand color"
           colorSpace="hsb"
@@ -18,11 +18,13 @@ export default function Example() {
         >
           <ColorThumb />
         </ColorArea>
-        <ColorField>
-          <Label>Brand color</Label>
-          <Input />
-        </ColorField>
-        <ColorSwatch />
+        <div className="flex items-end gap-3">
+          <ColorField className="min-w-0 flex-1">
+            <Label>Brand color</Label>
+            <Input />
+          </ColorField>
+          <ColorSwatch className="mb-0.5 shrink-0" />
+        </div>
       </div>
     </ColorPicker>
   );

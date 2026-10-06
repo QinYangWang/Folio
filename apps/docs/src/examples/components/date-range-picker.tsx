@@ -22,7 +22,7 @@ export default function Example() {
   return (
     <DateRangePicker>
       <Label>Event dates</Label>
-      <Group className="flex items-center gap-2">
+      <Group className="flex flex-wrap items-center gap-2">
         <DateInput slot="start">
           {(segment) => <DateSegment segment={segment} />}
         </DateInput>

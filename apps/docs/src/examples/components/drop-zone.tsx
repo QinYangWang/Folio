@@ -9,15 +9,17 @@ import { useState } from "react";
 export default function Example() {
   const [count, setCount] = useState(0);
   return (
-    <DropZone onDrop={(event) => setCount(event.items.length)}>
-      <Text slot="label">Drop files here</Text>
-      <FileTrigger
-        allowsMultiple
-        onSelect={(files) => setCount(files?.length ?? 0)}
-      >
-        <Button>Choose files</Button>
-      </FileTrigger>
-      <p role="status">{count} files selected</p>
-    </DropZone>
+    <div className="w-64 max-w-full">
+      <DropZone onDrop={(event) => setCount(event.items.length)}>
+        <Text slot="label">Drop files here</Text>
+        <FileTrigger
+          allowsMultiple
+          onSelect={(files) => setCount(files?.length ?? 0)}
+        >
+          <Button>Choose files</Button>
+        </FileTrigger>
+        <p role="status">{count} files selected</p>
+      </DropZone>
+    </div>
   );
 }

@@ -265,7 +265,7 @@ strong {
 .workspace {
   margin-left: 242px;
 }
-header {
+.workspace > header {
   height: 72px;
   border-bottom: 1px solid var(--color-kumo-hairline);
   display: flex;
@@ -308,7 +308,7 @@ header {
 .mobile-menu {
   display: none;
 }
-main {
+.workspace > main {
   max-width: 1400px;
   margin: auto;
   padding: 24px 43px 0;
@@ -804,7 +804,7 @@ h1 {
 .bottom-banner > button {
   margin-left: auto;
 }
-footer {
+.workspace > main > footer {
   border-top: 1px solid var(--color-kumo-hairline);
   display: flex;
   justify-content: space-between;
@@ -813,12 +813,12 @@ footer {
   font-size: 9px;
   padding: 23px 0;
 }
-footer > span {
+.workspace > main > footer > span {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-footer .logo-mark {
+.workspace > main > footer .logo-mark {
   transform: scale(0.55);
   width: 19px;
   margin-right: -5px;
@@ -1142,7 +1142,7 @@ footer .logo-mark {
 }
 
 @media (min-width: 1500px) {
-  main {
+  .workspace > main {
     padding-left: 65px;
     padding-right: 65px;
   }
@@ -1162,11 +1162,11 @@ footer .logo-mark {
   .workspace {
     margin-left: 215px;
   }
-  main {
+  .workspace > main {
     padding-left: 28px;
     padding-right: 28px;
   }
-  header {
+  .workspace > header {
     padding: 0 28px;
   }
   .hero-art {
@@ -1247,7 +1247,7 @@ footer .logo-mark {
   .mobile-menu {
     display: block;
   }
-  header {
+  .workspace > header {
     height: 60px;
     padding: 0 20px;
   }
@@ -1257,7 +1257,7 @@ footer .logo-mark {
   .header-actions a span {
     display: none;
   }
-  main {
+  .workspace > main {
     padding: 18px 20px 0;
   }
   .hero {
@@ -1328,7 +1328,7 @@ footer .logo-mark {
   .banner-icon {
     padding: 7px;
   }
-  footer {
+  .workspace > main > footer {
     gap: 10px;
     flex-wrap: wrap;
     font-size: 8px;
@@ -1892,34 +1892,132 @@ input::placeholder {
   }
 }
 
-/* Larger examples scroll within their canvas instead of overlapping captions. */
+/* Preview frames share a readable scale and never clip an example. */
+.component-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.component-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: 12px;
+  box-shadow: none;
+  background-image: none;
+  border-color: var(--color-kumo-hairline);
+}
+.component-preview,
 .component-preview:has(.catalog-example) {
-  overflow: auto;
-  align-items: safe center;
-  justify-content: safe center;
+  flex: 1 0 auto;
+  height: auto;
+  min-height: 300px;
+  padding: 28px 24px;
+  overflow: visible;
+  align-items: center;
+  justify-content: center;
   background: var(--color-kumo-recessed);
+  font-size: 14px;
+  line-height: 20px;
+}
+.component-preview > * {
+  min-width: 0;
+  max-width: 100%;
+}
+.component-caption {
+  flex: 0 0 auto;
+  min-height: 120px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 20px;
+  background-image: none;
+  background-color: var(--color-kumo-base);
+}
+.component-caption > div {
+  min-width: 0;
+}
+.component-caption > svg {
+  margin-top: 3px;
+}
+.component-caption strong {
+  font-size: 14px;
+  line-height: 20px;
+}
+.component-caption p {
+  font-size: 14px;
+  line-height: 20px;
+  max-width: none;
 }
 .catalog-example {
   min-width: 0;
   max-width: 100%;
-  font-size: 14px;
-  line-height: 20px;
+  width: 100%;
 }
 .catalog-example > [data-preview-ready] {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  max-width: 100%;
+}
+.catalog-example > [data-preview-ready] > * {
   min-width: 0;
   max-width: 100%;
 }
 .catalog-example input {
+  min-width: 0;
   max-width: 100%;
 }
-.catalog-example p {
+.catalog-example p,
+.component-preview .hint,
+.demo-tabs [role="tabpanel"] {
   font-size: 14px;
+  line-height: 20px;
+}
+.component-preview .input-preview,
+.component-preview .switch-preview {
+  width: 100%;
+  max-width: 280px;
+}
+.demo-tabs [role="tab"] {
+  font-size: 14px;
+  line-height: 20px;
 }
 .preview-pending {
   color: var(--text-color-kumo-subtle);
 }
-.component-card {
-  box-shadow: none;
-  background-image: none;
-  border-color: var(--color-kumo-hairline);
+.doc-preview {
+  min-height: 320px;
+  padding: 40px 24px;
+}
+.doc-example {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  font-size: 14px;
+  line-height: 20px;
+}
+.doc-example p {
+  line-height: 20px;
+}
+.doc-preview .doc-example h2 {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  letter-spacing: normal;
+}
+@media (max-width: 700px) {
+  .component-grid {
+    grid-template-columns: 1fr;
+  }
+  .component-preview {
+    padding: 28px 20px;
+  }
+  .component-caption {
+    min-height: 110px;
+  }
+  .doc-preview {
+    padding: 32px 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .component-preview { padding-inline: 12px; }
+  .doc-preview { padding-inline: 12px; }
 }

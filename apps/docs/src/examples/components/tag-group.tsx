@@ -16,7 +16,13 @@ export default function Example() {
         {(item) => (
           <Tag textValue={item.id}>
             {item.id}
-            <Button slot="remove">×</Button>
+            <Button
+              slot="remove"
+              variant="ghost"
+              className="size-6 min-h-6 p-0"
+            >
+              ×
+            </Button>
           </Tag>
         )}
       </TagList>

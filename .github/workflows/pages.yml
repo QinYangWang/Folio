@@ -43,6 +43,7 @@ jobs:
           node tests/components.mjs
           node tests/components-layout.mjs
           node tests/catalog-previews.mjs
+          node tests/catalog-previews.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
